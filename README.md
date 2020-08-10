@@ -26,6 +26,10 @@ cd ..
 
 ### Run locally
 
+- Change the credentials in the file .env.test and rename it to .env inside the main folder
+- Change the credentials in the file .env.test and rename it to .env inside the frontend folder
+- Run the below command
+
 ```
 npm run dev
 ```
