@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "express-session": "^1.17.1",
+    "googleapis": "^39.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.25",
     "morgan": "^1.10.0",
