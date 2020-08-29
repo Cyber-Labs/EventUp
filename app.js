@@ -67,10 +67,12 @@ app.use(cors()); // allows all origins
 // User
 const UserAuthRoutes = require('./routes/User/auth');
 const UserRoutes = require('./routes/User/user');
+const EventRoutes = require('./routes/User/event');
 
 // middleware
 app.use('/users', UserAuthRoutes);
 app.use('/users', UserRoutes);
+app.use('/users/events', EventRoutes);
 
 const PORT = process.env.PORT || 8000;
 

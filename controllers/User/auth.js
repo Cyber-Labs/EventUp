@@ -30,7 +30,6 @@ exports.register = (req, res) => {
                     });
                 }
                 else {
-                    // res.json('Signup success! Please signin');
                     return res.json({
                         message: 'Successfully registered! Please Login'
                     });
@@ -39,8 +38,6 @@ exports.register = (req, res) => {
             });
         }
     });
-
-
 };
 
 exports.login = (req, res) => {
@@ -74,5 +71,5 @@ exports.login = (req, res) => {
 
 exports.requireSignin = expressJwt({
     secret: process.env.JWT_SECRET,
-    algorithms: ['RS256']
+    algorithms: ['HS256']
 });

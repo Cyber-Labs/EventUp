@@ -18,8 +18,12 @@ export default function Homepage() {
                     });
                 }}            
             >
-                SignOut
+                Sign Out
             </Button>
+                &emsp;
+            <Button variant="success" href='/users/events/create'>Create Event</Button>
+            &emsp;
+            <Button variant="info" href='/users/events'>View All Event</Button>
         </React.Fragment>    
     );
 }
