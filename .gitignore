@@ -1,5 +1,6 @@
 # Env file
 .env
+credentials.json
 
 # Node modules
 node_modules/

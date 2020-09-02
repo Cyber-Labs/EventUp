@@ -14,6 +14,7 @@ const CreateEvent = () => {
         isPaid: 'free',
         price: 0,
         isPublic: 'public',
+        inputImage: null,
         buttonText: 'Create'
     });
 
@@ -24,6 +25,7 @@ const CreateEvent = () => {
         isPaid,
         price,
         isPublic,
+        inputImage,
         buttonText
     } = values;
 
@@ -33,25 +35,54 @@ const CreateEvent = () => {
         setValues({ ...values, [name]: event.target.value });
     };
 
+    const handleSelectedFile = e => {
+        e.preventDefault();
+        var fileInput = document.getElementById('file');   
+        var filePath = fileInput.value;        
+        // Allowing file type 
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;           
+        if (!allowedExtensions.exec(filePath)) { 
+            alert('Invalid file type\n Please choose from allowed extensions: .jpg, .jpeg, .png, .gif'); 
+            fileInput.value = ''; 
+            return false; 
+        } 
+        else {
+            // Image preview 
+            if (fileInput.files && fileInput.files[0]) { 
+                var reader = new FileReader(); 
+                reader.onload = function(e) { 
+                    document.getElementById( 
+                        'imagePreview').innerHTML =  
+                        `<img src="${e.target.result}" width="200" height="200" class="img-circle rounded-circle mx-auto d-block" alt="Uploaded Image"/>`; 
+                };                 
+                reader.readAsDataURL(fileInput.files[0]); 
+                setValues({
+                    ...values,
+                    inputImage: e.target.files[0]
+                });
+            }
+        }        
+    };
     
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, buttonText: 'Creating' });
+        const data = new FormData(document.getElementById("CreateEventForm"));    
+        data.append("file", inputImage );    
+        data.append("name", name );
+        data.append("about", about);
+        data.append("date", date );
+        data.append("isPaid", isPaid );
+        data.append("price", price );
+        data.append("isPublic", isPublic );
+        data.append("creator", isAuth()._id );
         axios({
             method: 'POST',
             url: `${process.env.REACT_APP_API}/users/events`,
             headers: {
                 Authorization: `Bearer ${token}`
             },
-            data: {
-                name: name, 
-                about: about, 
-                date: date,
-                isPaid: isPaid,
-                price: price,
-                isPublic: isPublic,
-                creator: isAuth()._id,
-            }
+            data: data
         })
             .then(response => {
                 console.log('Successfully created the event ', response);
@@ -76,13 +107,12 @@ const CreateEvent = () => {
     };
 
     const CreateEventForm = () => (
-        <form id="CreateEventForm"> 
+        <form encType="multipart/form-data" id="CreateEventForm"> 
             <div className="form-group">
                 <label className="labelCenter">Event Name</label>
                 <input 
                     onChange={handleChange('name')} 
                     value={name} 
-                    name="name"
                     placeholder="Enter Event Name" 
                     type="text" 
                     className="form-control mx-auto" 
@@ -93,8 +123,7 @@ const CreateEvent = () => {
                 <label className="labelCenter">About Event</label>
                 <textarea  
                     onChange={handleChange('about')} 
-                    value={about} 
-                    name="about"
+                    value={about}
                     placeholder="Enter Event Details" 
                     type="text" 
                     className="form-control mx-auto" 
@@ -107,7 +136,6 @@ const CreateEvent = () => {
                 <input 
                     onChange={handleChange('date')} 
                     value={date} 
-                    name="date"
                     type="date" 
                     className="form-control mx-auto" 
                 />
@@ -164,12 +192,25 @@ const CreateEvent = () => {
                 <input 
                     onChange={handleChange('price')} 
                     value={price}
-                    placeholder="Enter Event Price"  
-                    name="price"
+                    placeholder="Enter Event Price"
                     type="number" 
                     className="form-control mx-auto" 
                 />
             </div>
+
+            <div className="form-group align-items-center mx-auto">
+                <label className="labelCenter">Upload Company Logo</label>
+                <input
+                    type="file"
+                    id="file"
+                    className="form-control mx-auto border-0"
+                    onChange={handleSelectedFile}
+                />
+            </div>
+
+            {/* Image Preview */}
+            <div id="imagePreview"></div> 
+            <br/>
 
             <div className="text-center">
                 <button className="btn btn-primary FormSubmit" onClick={clickSubmit} >
