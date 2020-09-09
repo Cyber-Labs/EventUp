@@ -7,6 +7,10 @@ const {
     login,
 } = require('../../controllers/User/auth');
 
+const { 
+    sendEmail 
+} = require('../../controllers/User/email');
+
 router.post('/register', register);
 router.post('/login', login);
 
