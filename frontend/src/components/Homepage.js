@@ -11,6 +11,8 @@ export default function Homepage() {
                 <Link to="/users/login">Login</Link>
                 <br/>
                 <Link to="/users/register">Register</Link>
+                <br/>
+                <Link to="/qrcode">View Dummy QR Code</Link>
             </div>
         </React.Fragment>    
     );
