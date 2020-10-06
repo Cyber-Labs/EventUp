@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { isAuth } from '../../shared/helpers';
 import { ToastContainer, toast } from 'react-toastify';
+import bgPattern from '../../shared/images/bg2.jpg';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const Signup = () => {
@@ -44,17 +45,17 @@ const Signup = () => {
         <form>
             <div className="form-group">
                 <label className="labelCenter">Name</label>
-                <input onChange={handleChange('name')} value={name} type="text" className="form-control mx-auto border-right-0 border-left-0 border-top-0" />
+                <input onChange={handleChange('name')} value={name} type="text" className="form-control mx-auto" />
             </div>
 
             <div className="form-group">
                 <label className="labelCenter">Email</label>
-                <input onChange={handleChange('email')} value={email} type="email" className="form-control mx-auto border-right-0 border-left-0 border-top-0" />
+                <input onChange={handleChange('email')} value={email} type="email" className="form-control mx-auto" />
             </div>
 
             <div className="form-group">
                 <label className="labelCenter">Password</label>
-                <input onChange={handleChange('password')} value={password} type="password" className="form-control mx-auto border-right-0 border-left-0 border-top-0" />
+                <input onChange={handleChange('password')} value={password} type="password" className="form-control mx-auto" />
             </div>
 
             <div>
@@ -73,7 +74,7 @@ const Signup = () => {
         <div className="row login-background">
             <ToastContainer />
             <div className="col-md-6 mx-auto mt-5 mb-5">
-                <div className="card card-body">
+                <div className="card card-body" id="signupForm">
                     {isAuth() && isAuth().role === 'user' ? <Redirect to="/users/dashboard" /> : null}
                     <h1 className="text-center mb-4">Register</h1>
                     {signupForm()}
