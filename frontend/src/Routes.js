@@ -5,6 +5,7 @@ import './Styles.css';
 import Homepage from './components/Homepage';
 import Header from './components/HeaderComponent';
 import Footer from './components/FooterComponent';
+import Showqrcode from './components/Showqrcode';
 
 import UserLogin from './components/User/auth/Login';
 import UserRegister from './components/User/auth/Register';
@@ -22,6 +23,7 @@ const Routes = () => {
                 <Header />
                 <Switch>
                     <Route exact path="/" component={Homepage} />
+                    <Route exact path="/qrcode" component={Showqrcode} />
 
                     <Route exact path="/users/login" component={UserLogin} />
                     <Route exact path="/users/register" component={UserRegister} />
