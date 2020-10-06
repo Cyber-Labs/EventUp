@@ -4,3 +4,4 @@ credentials.json
 
 # Node modules
 node_modules/
+config/
