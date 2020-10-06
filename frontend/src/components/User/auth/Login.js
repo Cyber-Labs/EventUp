@@ -61,6 +61,10 @@ const Signin = ({ history }) => {
                     {buttonText}
                 </Button>         
             </div>
+            <div className="container text-center mb-4">
+                <hr/>
+                Not registerd yet ? <Link to = "/users/register"> Sign up</Link>
+            </div>
         </form>
     );
 
@@ -68,7 +72,7 @@ const Signin = ({ history }) => {
         <div className="row m-0">
             <ToastContainer />
             <div className="col-md-6 mx-auto mt-5 mb-5">
-                <div className="card card-body">
+                <div className="card card-body" id="loginForm">
                     {isAuth() ? <Redirect to="/users/dashboard" /> : null}
                     <h1 className="text-center mb-4">Login</h1>
                     {signinForm()}
