@@ -1,7 +1,10 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import './Styles.css';
 
 import Homepage from './components/Homepage';
+import Header from './components/HeaderComponent';
+import Footer from './components/FooterComponent';
 
 import UserLogin from './components/User/auth/Login';
 import UserRegister from './components/User/auth/Register';
@@ -16,6 +19,7 @@ const Routes = () => {
     return (
         <Fragment>
             <BrowserRouter>
+                <Header />
                 <Switch>
                     <Route exact path="/" component={Homepage} />
 
@@ -26,6 +30,7 @@ const Routes = () => {
                     <UserPrivateRoute exact path="/users/events/create" component={UserCreateEvent} />
                     <UserPrivateRoute exact path="/users/events" component={ViewAllEvents} />
                 </Switch>
+                <Footer />
             </BrowserRouter>
         </Fragment>   
     );

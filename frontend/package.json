@@ -13,9 +13,11 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
+    "react-popper": "^2.2.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "react-toastify": "^6.0.8"
+    "react-scripts": "^3.4.3",
+    "react-toastify": "^6.0.8",
+    "reactstrap": "^8.6.0"
   },
   "scripts": {
     "start": "react-scripts start",

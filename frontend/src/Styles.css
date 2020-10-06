@@ -1,0 +1,57 @@
+.topOfNav{
+    background-color: #2d545e;
+    color: aliceblue;
+    height: 50px;
+    padding-top: 5px;
+}
+
+.topOfNav .writeup{
+    font: 10px 300;
+    text-align: center;
+}
+
+.footer{
+    position: relative;
+    bottom: 0px;
+    background-color: #2d545e;
+    color: aliceblue;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+
+.belowCreate{
+    height:3px;
+    color:cadetblue;
+    background-color: cadetblue;
+    border-radius:1px;
+}
+.belowAboutUs{
+    height:1px;
+    color: darkslategrey;
+    background-color: darkslategrey;
+    border-radius:0.2px;
+}
+
+
+.footer .contact-link{
+    color: rgb(230, 154, 40);
+}
+
+.footer .fa:hover{
+    color: dodgerblue;
+}
+
+.footer .fa-instagram:hover{
+    color: #c13584;
+}
+
+.footer .fa-facebook:hover{
+    color: white;
+}
+
+.footer .fa-phone:hover{
+    color: green;
+}
+.footer .fa-envelope:hover{
+    color: #d44638;
+}
