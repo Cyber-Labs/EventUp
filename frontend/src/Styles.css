@@ -3,6 +3,7 @@
     color: aliceblue;
     height: 50px;
     padding-top: 5px;
+    margin: 0px !important;
 }
 
 .topOfNav .writeup{

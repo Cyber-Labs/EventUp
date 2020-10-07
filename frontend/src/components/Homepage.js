@@ -13,6 +13,8 @@ export default function Homepage() {
                 <Link to="/users/register">Register</Link>
                 <br/>
                 <Link to="/qrcode">View Dummy QR Code</Link>
+                <br/>
+                <Link to="/upload">Upload Image</Link>
             </div>
         </React.Fragment>    
     );
