@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
 export default function Upload () {
 
@@ -14,18 +13,18 @@ export default function Upload () {
         secure_url
     } = values;
 
-    const UploadImage = async e => {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append('file', files[0]);
-        data.append('upload_preset', 'eventup');
-        const res = await fetch('https://api.cloudinary.com/v1_1/eventup/image/upload' , {
-            method: 'POST',
-            body: data
-        })
-        const file = await res.json();
-        console.log(file);
-    }
+    // const UploadImage = async e => {
+    //     const files = e.target.files;
+    //     const data = new FormData();
+    //     data.append('file', files[0]);
+    //     data.append('upload_preset', 'eventup');
+    //     const res = await fetch('https://api.cloudinary.com/v1_1/eventup/image/upload' , {
+    //         method: 'POST',
+    //         body: data
+    //     })
+    //     const file = await res.json();
+    //     console.log(file);
+    // }
 
     const handleSelectedFile = e => {
         e.preventDefault();

@@ -1,7 +1,4 @@
 const Event = require('../../models/Event');
-const multer = require("multer");
-var AWS = require("aws-sdk");
-var storage = multer.memoryStorage();
 
 exports.create = (req, res) => {
     const { 
@@ -11,10 +8,12 @@ exports.create = (req, res) => {
         isPaid,
         price,
         isPublic,
-        creator        
+        creator,
+        secure_url       
     } = req.body;
 
     // Validation Starts
+    console.log(req.body);
     const textFormat = /[a-z A-Z0-9]+$/;
     if (name === null || name === undefined) {
         return res.status(400).json({
@@ -72,88 +71,38 @@ exports.create = (req, res) => {
             error: 'Please login to continue'
         });
     }
+    if (secure_url === null || secure_url === undefined) {
+        return res.status(400).json({
+            error: 'Image Upload is required'
+        });
+    }
     console.log('Cleared validation');
 
-    // If file is uploaded
-    if(req.file) {
-        const file = req.file;
-        const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK;
-      
-        let s3bucket = new AWS.S3({
-            accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-            region: process.env.AWS_REGION
-        });
+    // Create a new event
+    let obj = new Event({
+        name: name,
+        about:about, 
+        date:date,
+        isPaid:isPaid,
+        price:price,
+        isPublic:isPublic,
+        creator:creator,
+        secure_url: secure_url,
+    });
 
-        // Store the file      
-        var params = {
-            Bucket: process.env.AWS_BUCKET_NAME,
-            Key: 'eventimage/' +  Date.now().toString(),
-            Body: file.buffer,
-            ContentType: file.mimetype,
-            ACL: "public-read"
-        };
-      
-        s3bucket.upload(params, function(err, data) {
-            if (err) {
-                res.status(500).json({ error: true, Message: err });
-            } 
-            else {
-                // Create a new event
-                let obj = new Event({
-                    name: name,
-                    about:about, 
-                    date:date,
-                    isPaid:isPaid,
-                    price:price,
-                    isPublic:isPublic,
-                    creator:creator,
-                    fileUrl: s3FileURL + params.Key,
-                    fileS3_Key: params.Key
-                });
-
-                Event.create(obj, function(err,item){
-                    if(err)
-                    {
-                        console.log('Error in failed', err);
-                        return res.status(400).json({
-                        error: 'Event create failed'
-                        });
-                    }      
-                    else{
-                        // console.log("Succesfully Created Event", item);
-                        res.json(item);
-                    }
-                });
-            }
-        });
-    }
-    // If no file is uploaded    
-    else {    
-        // Create a new event
-        let obj = new Event({
-            name: name,
-            about:about, 
-            date:date,
-            isPaid:isPaid,
-            price:price,
-            isPublic:isPublic,
-            creator:creator,
-        });
-        Event.create(obj, function(err,item){
-            if(err)
-            {
-                console.log('Event create failed', err);
-                return res.status(400).json({
-                error: 'Event create failed'
-                });
-            }      
-            else{
-                // console.log("Succesfully Created Event", item);
-                res.json(item);
-            }
-        });    
-    }
+    Event.create(obj, function(err,item){
+        if(err)
+        {
+            console.log('Event create failed ', err);
+            return res.status(400).json({
+            error: 'Event create failed'
+            });
+        }      
+        else{
+            // console.log("Succesfully Created Event", item);
+            res.json(item);
+        }
+    });
 };
 
 exports.read = (req, res) => {
