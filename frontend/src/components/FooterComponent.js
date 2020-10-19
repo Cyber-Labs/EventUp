@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer(props){
     return(
         <div className="footer">
             <div className="container">
+<<<<<<< HEAD
                 <div clasName="row justify-content-center">
                     <div clasName="col-auto">
                     <Link style={{ textDecoration: 'none' }} to="/users/events/create"><h3>Create your own event here...</h3></Link>
+=======
+                <div className="row justify-content-center">
+                    <div className="col-auto">
+                    <Link to="/users/events/create"><h3>Create your own event here...</h3></Link>
+>>>>>>> 684424c8e771243ef3ffaf4a44776f734a558ace
                         <hr className="belowCreate"></hr>
                     </div>
                 </div>

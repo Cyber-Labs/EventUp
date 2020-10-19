@@ -3,7 +3,6 @@ import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import './Styles.css';
 
 import Homepage from './components/Homepage';
-import AboutusPage from './components/AboutusPage';
 import Header from './components/HeaderComponent';
 import Footer from './components/FooterComponent';
 import Showqrcode from './components/Showqrcode';
@@ -26,11 +25,7 @@ const Routes = () => {
                 <Switch>
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/qrcode" component={Showqrcode} />
-<<<<<<< HEAD
-                    <Route exact path="/aboutus" component={AboutusPage} />
-=======
                     <Route exact path="/upload" component={Upload} />
->>>>>>> 684424c8e771243ef3ffaf4a44776f734a558ace
 
                     <Route exact path="/users/login" component={UserLogin} />
                     <Route exact path="/users/register" component={UserRegister} />

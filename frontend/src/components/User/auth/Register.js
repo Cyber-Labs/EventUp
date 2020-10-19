@@ -3,7 +3,6 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { isAuth } from '../../shared/helpers';
 import { ToastContainer, toast } from 'react-toastify';
-import bgPattern from '../../shared/images/bg2.jpg';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const Signup = () => {
