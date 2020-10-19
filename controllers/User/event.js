@@ -1,4 +1,5 @@
 const Event = require('../../models/Event');
+const jwt = require('jsonwebtoken');
 
 exports.create = (req, res) => {
     const { 
@@ -211,6 +212,12 @@ exports.EventPageCount = (req, res) => {
 };
 
 exports.EventPageData = (req, res) => {
+    const usertoken = req.headers.authorization;
+    console.log("usertoken ", usertoken);
+    const token = usertoken.split(' ');
+    const decoded = jwt.verify(token[1], process.env.JWT_SECRET);
+    console.log("decoded ", decoded);
+
     const pageNumber = req.params.pagenumber;
     const eventsPerPage = 5;
     Event.find({})

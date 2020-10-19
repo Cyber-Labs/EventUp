@@ -40,11 +40,20 @@ const EventSchema = new mongoose.Schema(
             trim: true,
             default: ''            
         },
-        appliedUser: [{ 
-            type : mongoose.Schema.Types.ObjectId, 
-            ref: 'User' ,
-            deafult: []
-        }]
+        appliedUser: [
+            { 
+                type : mongoose.Schema.Types.ObjectId, 
+                ref: 'User',
+                deafult: []
+            }
+        ],
+        comments: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Comment",
+                default: []
+            }
+        ]
     },
     { timestamps: true }
 );
