@@ -3,6 +3,25 @@ const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
 const nodemailer = require("nodemailer");
 
+exports.verifyJwtToken = (req, res, next) => {
+    try {
+        const usertoken = req.headers.authorization;
+        //console.log("usertoken ", usertoken);
+        const token = usertoken.split(' ');
+        const decoded = jwt.verify(token[1], process.env.JWT_SECRET);
+        //console.log("decoded ", decoded);
+        req.user = decoded;
+        next();
+    }
+    catch(error) {
+        console.log("Error in verifying jwt token ", err);
+        return res.status(400).json({
+            success: false,
+            errorMessage: 'Error in verifying jwt token'
+        });
+    }
+};
+
 exports.register = (req, res) => {
     const { name, email, password } = req.body;
 
@@ -43,34 +62,35 @@ exports.register = (req, res) => {
 
 exports.login = (req, res) => {
     const { email, password } = req.body;
+    // console.log("req", req);
 
-    const senderEmail = require('../../config/keys').email;
-    const senderPassword = require('../../config/keys').password;
-    const receiverEmail = ["aman.dwivedi5@gmail.com","help.eventup@gmail.com" ];
-    const emailMessage = "This is a testing email !!!";
+    // const senderEmail = require('../../config/keys').email;
+    // const senderPassword = require('../../config/keys').password;
+    // const receiverEmail = ["aman.dwivedi5@gmail.com","help.eventup@gmail.com" ];
+    // const emailMessage = "This is a testing email !!!";
 
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: senderEmail,
-          pass: senderPassword
-        }
-      });
+    // var transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //       user: senderEmail,
+    //       pass: senderPassword
+    //     }
+    //   });
   
-    var mailOptions = {
-        from: senderEmail,
-        to: receiverEmail,
-        subject: 'Test Email',
-        text: emailMessage,
-    };
+    // var mailOptions = {
+    //     from: senderEmail,
+    //     to: receiverEmail,
+    //     subject: 'Test Email',
+    //     text: emailMessage,
+    // };
   
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent successfully' );
-        }
-    });   
+    // transporter.sendMail(mailOptions, function(error, info){
+    //     if (error) {
+    //       console.log(error);
+    //     } else {
+    //       console.log('Email sent successfully' );
+    //     }
+    // });   
 
     // check if user exist
     User.findOne({ email }).exec((err, user) => {
@@ -87,8 +107,8 @@ exports.login = (req, res) => {
         }
         else {
             // generate a token and send to client
-            const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
             const { _id, name, email } = user;
+            const token = jwt.sign({ _id: _id, name: name, email: email }, process.env.JWT_SECRET, { expiresIn: '7d' });            
 
             return res.json({
                 token,

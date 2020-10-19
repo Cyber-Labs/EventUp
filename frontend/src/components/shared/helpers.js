@@ -49,10 +49,14 @@ export const isAuth = () => {
         if (cookieChecked) {
             if (localStorage.getItem('user')) {
                 return JSON.parse(localStorage.getItem('user'));
-            } else {
+            } 
+            else {
                 return false;
             }
         }
+    }
+    else {
+        return false;
     }
 };
 

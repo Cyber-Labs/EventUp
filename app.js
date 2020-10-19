@@ -68,11 +68,13 @@ app.use(cors()); // allows all origins
 const UserAuthRoutes = require('./routes/User/auth');
 const UserRoutes = require('./routes/User/user');
 const EventRoutes = require('./routes/User/event');
+const CommentRoutes = require('./routes/User/comment');
 
 // middleware
 app.use('/users', UserAuthRoutes);
 app.use('/users', UserRoutes);
 app.use('/users/events', EventRoutes);
+app.use('/users/events', CommentRoutes);
 
 // const fs = require('fs');
 // const readline = require('readline');
