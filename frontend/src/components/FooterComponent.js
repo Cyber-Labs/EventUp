@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer(props){
     return(
         <div className="footer">
             <div className="container">
-                <div clasName="row justify-content-center">
-                    <div clasName="col-auto">
+                <div className="row justify-content-center">
+                    <div className="col-auto">
                     <Link to="/users/events/create"><h3>Create your own event here...</h3></Link>
                         <hr className="belowCreate"></hr>
                     </div>

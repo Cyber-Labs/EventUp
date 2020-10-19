@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { isAuth, getCookie} from '../../shared/helpers';
 import { ToastContainer, toast } from 'react-toastify';
@@ -15,7 +14,7 @@ const CreateEvent = () => {
         price: 0,
         isPublic: 'public',
         inputImage: null,
-        buttonText: 'Create'
+        buttonText: 'Create',
     });
 
     const { 
@@ -26,7 +25,7 @@ const CreateEvent = () => {
         price,
         isPublic,
         inputImage,
-        buttonText
+        buttonText,
     } = values;
 
     const token = getCookie('token');
@@ -37,6 +36,7 @@ const CreateEvent = () => {
 
     const handleSelectedFile = e => {
         e.preventDefault();
+
         var fileInput = document.getElementById('file');   
         var filePath = fileInput.value;        
         // Allowing file type 
@@ -53,7 +53,7 @@ const CreateEvent = () => {
                 reader.onload = function(e) { 
                     document.getElementById( 
                         'imagePreview').innerHTML =  
-                        `<img src="${e.target.result}" width="200" height="200" class="img-circle rounded-circle mx-auto d-block" alt="Uploaded Image"/>`; 
+                        `<img src="${e.target.result}" width="200" height="200" class="img-circle mx-auto d-block" alt="Uploaded Image"/>`; 
                 };                 
                 reader.readAsDataURL(fileInput.files[0]); 
                 setValues({
@@ -67,43 +67,67 @@ const CreateEvent = () => {
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, buttonText: 'Creating' });
-        const data = new FormData(document.getElementById("CreateEventForm"));    
+        const data = new FormData();    
         data.append("file", inputImage );    
-        data.append("name", name );
-        data.append("about", about);
-        data.append("date", date );
-        data.append("isPaid", isPaid );
-        data.append("price", price );
-        data.append("isPublic", isPublic );
-        data.append("creator", isAuth()._id );
+        data.append('upload_preset', 'eventup');  
+
         axios({
             method: 'POST',
-            url: `${process.env.REACT_APP_API}/users/events`,
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
+            url: 'https://api.cloudinary.com/v1_1/eventup/image/upload',
             data: data
         })
             .then(response => {
-                console.log('Successfully created the event ', response);
-                setValues({ 
-                    ...values, 
-                    name: '',
-                    about:'', 
-                    date:'',
-                    isPaid: 'free',
-                    price: 0,
-                    isPublic: 'public',
-                    creator: isAuth()._id ,
-                    buttonText: 'Created'
-                });
-                toast.success("Successfully created the event");
+                console.log('Successfully uploaded', response); 
+                console.log('Url ', response.data.secure_url);
+                return response.data.secure_url
+            })
+            .then(response => {
+                axios({
+                    method: 'POST',
+                    url: `${process.env.REACT_APP_API}/users/events`,
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                    data: {
+                        "name": name,
+                        "about": about,
+                        "date": date,
+                        "isPaid": isPaid,
+                        "price": price,
+                        "isPublic": isPublic,
+                        "creator": isAuth()._id,
+                        "secure_url": response
+                    }
+                })
+                    .then(response => {
+                        console.log('Successfully created the event ', response);
+                        setValues({ 
+                            ...values, 
+                            name: '',
+                            about:'', 
+                            date:'',
+                            isPaid: 'free',
+                            price: 0,
+                            isPublic: 'public',
+                            creator: isAuth()._id ,
+                            buttonText: 'Created',
+                            inputImage: null,
+                            secure_url: null,
+                        });
+                        toast.success("Successfully created the event");
+                    })
+                    .catch(error => {
+                        console.log('Error in creating new event ', error);
+                        setValues({ ...values, buttonText: 'Create' });
+                        toast.error(error.response.data.error);
+                    });
+        
             })
             .catch(error => {
-                console.log('Error in creating new event ', error);
-                setValues({ ...values, buttonText: 'Create' });
-                toast.error(error.response.data.error);
+                console.log('Error in uploading ', error);
             });
+
+
     };
 
     const CreateEventForm = () => (

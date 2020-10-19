@@ -9,20 +9,16 @@ const Header = (props) => {
     const [isNavOpen,setIsNavOpen] = useState(false);
     const toggleNav = () => {
             setIsNavOpen(!isNavOpen)
-    }
-
-    
+    }    
         const history = useHistory();
         return(
-            <>
-            
+            <React.Fragment>            
                 <div className="row topOfNav">
-                    <dic className="col-12 writeup">
+                    <div className="col-12 writeup">
                         <h3>Discover the events you are interested in...</h3>
-                    </dic>
-                </div>
-            
-            <Navbar color="dark" dark expand="md">
+                    </div>
+                </div>            
+                <Navbar color="dark" dark expand="md">
                 <div className="container navHeight">
                     <NavbarBrand href="/">EventUp</NavbarBrand>
                     <NavbarToggler onClick={toggleNav}  />
@@ -34,7 +30,7 @@ const Header = (props) => {
                                 </NavLink>
                             </NavItem>
                             {isAuth() ? 
-                               <>
+                               <React.Fragment>
                                <NavItem>
                                     <NavLink className="nav-link" to="/users/dashboard">
                                         <span> Dashboard</span>
@@ -49,7 +45,7 @@ const Header = (props) => {
                                 >
                                     Sign Out
                                 </Button>
-                                </>
+                                </React.Fragment>
                                 :
                                 <>
                                 <NavItem>
@@ -63,15 +59,12 @@ const Header = (props) => {
                                     </NavLink>
                                 </NavItem>
                                 </>
-                            }
-                            
+                            }                            
                         </Nav>
                     </Collapse>
                 </div>
-            </Navbar>
-            </>
-        )
-    
+                </Navbar>
+            </React.Fragment>
+        )    
 }
-
 export default Header

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Link } from "react-router-dom";
 import axios from 'axios';
-import {Row, Col,Media, Button,Card,Tabs,Tab,Badge,Accordion} from 'react-bootstrap';
-import { ToastContainer, toast} from 'react-toastify';
-import { isAuth, getCookie, signout } from '../../shared/helpers';
+import {Media, Button,Card} from 'react-bootstrap';
+import {getCookie } from '../../shared/helpers';
 import Concert from '../../shared/images/concert.jpg';
 
 export default function ViewAllEvents() {
@@ -64,6 +62,7 @@ export default function ViewAllEvents() {
     useEffect(() => {
         loadevents();
         loadPages();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[currentPage]);
 
     return(
@@ -73,8 +72,8 @@ export default function ViewAllEvents() {
             <div className="mx-auto">
             {
                 events    &&
-                events.map(event => ( 
-                <div className="m-5">
+                events.map((event, index) => ( 
+                <div className="m-5" key={index}>
                     <Card>
                     <Card.Header>{event.name}</Card.Header>
                     <Card.Body>
@@ -101,7 +100,7 @@ export default function ViewAllEvents() {
                                   
             ))}
             </div>            
-            <div className="mx-auto te">
+            <div className="mx-auto">
                 {   
                     pageArray.map(pageNumber => (
                     <div className="mx-auto" key={pageNumber}>                        

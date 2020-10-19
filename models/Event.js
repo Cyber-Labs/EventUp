@@ -35,12 +35,7 @@ const EventSchema = new mongoose.Schema(
             ref: 'User',
             required: true
         },
-        fileUrl: {
-            type:  String,
-            trim: true,
-            default: ''            
-        },
-        fileS3_Key: {
+        secure_url: {
             type:  String,
             trim: true,
             default: ''            
