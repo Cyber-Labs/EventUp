@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Media, Button,Card} from 'react-bootstrap';
 import {getCookie } from '../../shared/helpers';
@@ -93,6 +94,7 @@ export default function ViewAllEvents() {
                             </Media.Body>
                         </Media>
                         <Button variant="primary" className="mt-3">Join</Button>
+                        <Link to={`/users/events/${event._id}`}>Discussion Page</Link>
                     </Card.Body>
                     </Card> 
                 </div>
