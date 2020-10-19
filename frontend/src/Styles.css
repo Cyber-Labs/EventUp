@@ -11,6 +11,102 @@
     text-align: center;
 }
 
+.intro{
+    background-image: url(components/shared/images/introBG2.jpg);
+    background-size: cover;
+}
+
+.intro .jumbo{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    color: cornsilk;
+}
+
+.intro .jumbo .display-3{
+    font-size: larger;
+    font-weight: 800;
+    margin-bottom: 23px;
+}
+
+.intro .jumbo .introJoin{
+    margin-top: 26px;
+    height: 60px;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.working{
+    height: 100vh;
+    padding-top: 40px;
+    background-color: #180a5b;
+}
+
+.working .headWork{
+    text-align: center;
+    color: lightyellow;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.working img{
+    margin-top: 30px;
+    height: 60vh;
+}
+
+.twoOptions{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: cadetblue;
+}
+.twoOptions .optionHead{
+    font-weight: 800;
+    color:black;
+}
+
+.twoOptions .options{
+    padding-top: 25px;
+}
+
+.follow{
+    height: 60;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    background-color: blanchedalmond;
+}
+
+.followText{
+    text-align: center;
+    font: 24px;
+    font-weight: 700;
+}
+
+
+.follow .follow-box{
+    padding-top: 19px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: center; 
+    /* space-around */
+}
+
+.follow .box{
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    
+}
+
+.follow .box a{
+    padding-top: 25%;
+    color: mediumturquoise;
+}
+
+.follow .box p{
+    font-size: 24px;
+    font-weight: 400;
+}
+
 .footer{
     position: relative;
     bottom: 0px;

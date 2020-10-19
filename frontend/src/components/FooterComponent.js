@@ -5,9 +5,9 @@ function Footer(props){
     return(
         <div className="footer">
             <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-auto">
-                    <Link to="/users/events/create"><h3>Create your own event here...</h3></Link>
+                <div clasName="row justify-content-center">
+                    <div clasName="col-auto">
+                    <Link style={{ textDecoration: 'none' }} to="/users/events/create"><h3>Create your own event here...</h3></Link>
                         <hr className="belowCreate"></hr>
                     </div>
                 </div>
@@ -18,7 +18,7 @@ function Footer(props){
                         <h3>Event Up</h3>
                     </div>
                     <div className="col-12 col-sm-6">
-                        <h4>About Us</h4>
+                        <Link style={{ textDecoration: 'none' }} to="/aboutus"><h4>About Us</h4></Link>
                         <hr></hr>
                         <p>EventUp is an open source initiative website to<br></br>
                          let you join an event happening near based on your interest.</p>
@@ -27,9 +27,9 @@ function Footer(props){
                 <div className="row justify-content-center">
                     <div className="col-4 col-offset-4 col-sm-6">
                         <h6> Follow us at : </h6>
-                            <a className="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i className="fa fa-facebook"></i></a>
-                            <a className="btn btn-social-icon btn-instagram" href="http://www.instagram.com/"><i className="fa fa-instagram"></i></a>
-                            <a className="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i className="fa fa-twitter"></i></a>
+                            <a className="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i className="fa fa-facebook fa-lg"></i></a>
+                            <a className="btn btn-social-icon btn-instagram" href="http://www.instagram.com/"><i className="fa fa-instagram fa-lg"></i></a>
+                            <a className="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i className="fa fa-twitter fa-lg"></i></a>
                         
                     </div>
                     <div className="col-12 col-sm-6">
