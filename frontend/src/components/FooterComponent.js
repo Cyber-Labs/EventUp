@@ -5,8 +5,8 @@ function Footer(props){
     return(
         <div className="footer">
             <div className="container">
-                <div clasName="row justify-content-center">
-                    <div clasName="col-auto">
+                <div className="row">
+                    <div className="col-12">
                     <Link style={{ textDecoration: 'none' }} to="/users/events/create"><h3>Create your own event here...</h3></Link>
                         <hr className="belowCreate"></hr>
                     </div>

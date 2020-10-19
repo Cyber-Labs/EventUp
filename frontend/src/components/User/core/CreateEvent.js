@@ -249,7 +249,7 @@ const CreateEvent = () => {
             <div className="row">
                 <ToastContainer />
                 <div className="col-md-9 mx-auto my-4 ">
-                    <div className="card card-body">
+                    <div className="card card-body" id="signupForm">
                         <h3 className="text-center mb-3">
                         Create New Event
                         </h3>                        
