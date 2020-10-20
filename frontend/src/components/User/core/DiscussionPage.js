@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
 import axios from 'axios';
-import { toast} from 'react-toastify';
-import Image from 'react-bootstrap/Image'
 import { isAuth, getCookie } from '../../shared/helpers';
 
 import './DiscussionPage.css'
@@ -28,6 +25,21 @@ export default function DiscussionPage() {
 
     const clickSubmit = event => {
         event.preventDefault();
+        axios({
+            method: 'POST',            
+            url: `${process.env.REACT_APP_API}/users/events/${eventId}/comment`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            data: {message}
+        })
+            .then(response => {
+                console.log("response.data ", response.data);
+                setValues({ ...values, message: '' });
+            })
+            .catch(error => {
+                console.log('Error in finding chats', error);
+            });
     };  
 
     const ConvertDate = str => {
@@ -35,26 +47,26 @@ export default function DiscussionPage() {
         return d.toLocaleString();
     }
 
-    const loadChats = () => {
-        axios({
-            method: 'GET',            
-            url: `${process.env.REACT_APP_API}/users/events/${eventId}/comment`,
-        })
-            .then(response => {
-                console.log("response.data.data ", response.data.data);
-                setchats(response.data.data);
-            })
-            .catch(error => {
-                console.log('Error in finding chats', error);
-            });
-    };
     useEffect(() => {
+        const loadChats = () => {
+            axios({
+                method: 'GET',            
+                url: `${process.env.REACT_APP_API}/users/events/${eventId}/comment`,
+            })
+                .then(response => {
+                    console.log("response.data.data ", response.data.data);
+                    setchats(response.data.data);
+                })
+                .catch(error => {
+                    console.log('Error in finding chats', error);
+                });
+        };
         loadChats();
-    },[message]);
+    },[message, eventId]);
 
     return(
         <React.Fragment>
-            <div className="row">
+            <div className="row m-0">
                 <div className="col-md-9 mx-auto my-0">
                     <h1 className="text-center">Discussion Page</h1>
                     <section className="msger">
@@ -63,23 +75,12 @@ export default function DiscussionPage() {
                             <i className="fa fa-comments" aria-hidden="true"></i> Discussions
                             </div>
                         </header>
-
-                        {/* <div className="msg left-msg mt-2">
-                            <div className="msg-img fa fa-user-secret fa-3x"></div>
-                            <div className="msg-bubble">
-                                <div className="msg-info">
-                                <div className="msg-info-name">Admin</div>
-                                </div>
-                                <div className="msg-text">
-                                    Hi, welcome to Eventup! &#128578;
-                                </div>
-                            </div>
-                        </div> */}
                     {
                         chats    &&
                         chats.map((chat, index) => (
                             <main className="msger-chat" key={index}>
                                 {   
+                                
                                 ( (isAuth()._id) && (chat.author._id) && (chat.author._id.toString() === isAuth()._id.toString()) ) ?
                                     (<div className="msg right-msg">
                                         <div className="msg-bubble">
@@ -124,7 +125,7 @@ export default function DiscussionPage() {
                                 onChange={handleChange('message')}
                                 value={message}
                             />
-                            <button type="submit" className="msger-send-btn" onClick={clickSubmit} >Send</button>
+                            <button type="submit" className="msger-send-btn" onClick={clickSubmit}>Send</button>
                         </form>
                     </div>                  
 

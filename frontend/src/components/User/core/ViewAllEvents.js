@@ -23,48 +23,47 @@ export default function ViewAllEvents() {
         // console.log(pageArray);
     }
 
-    const loadevents = () => {
-        axios({
-            method: 'GET',
-            url: `${process.env.REACT_APP_API}/users/events/page/${currentPage}`,
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then(response => {
-                // console.log('event postings found', response);
-                setevents(response.data);
-            })
-            .catch(error => {
-                console.log('Error in finding events ', error);
-            });
-    };
-    const loadPages = () => {
-        axios({
-            method: 'GET',
-            url: `${process.env.REACT_APP_API}/users/events/pagecount`,
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then(response => {
-                // console.log('Page count found', response);
-                const pageCount = response.data;
-                // console.log("pageCount in load pages");
-                // console.log(pageCount);
-                createPages(pageCount);
-                // console.log("currentPage");
-                // console.log(currentPage);
-            })
-            .catch(error => {
-                console.log('Error in finding page count', error);
-            });
-    };
     useEffect(() => {
+        const loadevents = () => {
+            axios({
+                method: 'GET',
+                url: `${process.env.REACT_APP_API}/users/events/page/${currentPage}`,
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(response => {
+                    // console.log('event postings found', response);
+                    setevents(response.data);
+                })
+                .catch(error => {
+                    console.log('Error in finding events ', error);
+                });
+        };
+        const loadPages = () => {
+            axios({
+                method: 'GET',
+                url: `${process.env.REACT_APP_API}/users/events/pagecount`,
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(response => {
+                    // console.log('Page count found', response);
+                    const pageCount = response.data;
+                    // console.log("pageCount in load pages");
+                    // console.log(pageCount);
+                    createPages(pageCount);
+                    // console.log("currentPage");
+                    // console.log(currentPage);
+                })
+                .catch(error => {
+                    console.log('Error in finding page count', error);
+                });
+        };
         loadevents();
         loadPages();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[currentPage]);
+    },[currentPage, token]);
 
     return(
         <React.Fragment>
