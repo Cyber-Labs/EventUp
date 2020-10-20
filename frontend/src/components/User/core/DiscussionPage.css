@@ -55,6 +55,7 @@
     padding: 15px;
     border-radius: 15px;
     background: #ececec;
+    position: relative;
 }
 
 .msg-info {
@@ -67,6 +68,13 @@
 .msg-info-name {
     margin-right: 10px;
     font-weight: bold;
+}
+
+.msg-info-time {
+    position: absolute;
+    bottom: 0px;
+    right: 5px;    
+    font-size: 10px;
 }
 
 .left-msg .msg-bubble {

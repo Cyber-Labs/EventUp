@@ -4,7 +4,6 @@ import axios from 'axios';
 import { toast} from 'react-toastify';
 import Image from 'react-bootstrap/Image'
 import { isAuth, getCookie } from '../../shared/helpers';
-import md5 from 'md5';
 
 import './DiscussionPage.css'
 
@@ -20,9 +19,8 @@ export default function DiscussionPage() {
     const url = window.location.href.replace(/\/$/, '');  
     // remove optional / from end of url and get event id from url
     const eventId = url.substr(url.lastIndexOf('/') + 1);
-    const { 
-        message 
-    } = values;
+
+    const { message } = values;
 
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
@@ -31,6 +29,11 @@ export default function DiscussionPage() {
     const clickSubmit = event => {
         event.preventDefault();
     };  
+
+    const ConvertDate = str => {
+        let d = new Date (str);
+        return d.toLocaleString();
+    }
 
     const loadChats = () => {
         axios({
@@ -61,26 +64,24 @@ export default function DiscussionPage() {
                             </div>
                         </header>
 
-                        <div className="msg left-msg mt-2">
+                        {/* <div className="msg left-msg mt-2">
                             <div className="msg-img fa fa-user-secret fa-3x"></div>
                             <div className="msg-bubble">
                                 <div className="msg-info">
                                 <div className="msg-info-name">Admin</div>
-                                {/* <div className="msg-info-time">12:45</div> */}
                                 </div>
                                 <div className="msg-text">
                                     Hi, welcome to Eventup! &#128578;
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     {
                         chats    &&
                         chats.map((chat, index) => (
                             <main className="msger-chat" key={index}>
                                 {   
-                                ( (isAuth._id) && (chat.author._id) && (chat.author._id.toString() !== isAuth._id.toString()) ) ?
+                                ( (isAuth()._id) && (chat.author._id) && (chat.author._id.toString() === isAuth()._id.toString()) ) ?
                                     (<div className="msg right-msg">
-                                        <Image src={`https://www.gravatar.com/avatar/${md5(chat.author.email)}?d=identicon`} roundedCircle />
                                         <div className="msg-bubble">
                                             <div className="msg-info">
                                             <div className="msg-info-name">{chat.author.name}</div>
@@ -89,17 +90,22 @@ export default function DiscussionPage() {
                                             <div className="msg-text">
                                                 {chat.text}
                                             </div>
+                                            <div className="msg-info-time">
+                                                {ConvertDate(chat.createdAt)}
+                                            </div>
                                         </div>
                                     </div>)
                                 : 
                                     (<div className="msg left-msg">
-                                        <Image src={`https://www.gravatar.com/avatar/${md5(chat.author.email)}?d=identicon`} roundedCircle />
                                         <div className="msg-bubble">
                                             <div className="msg-info">
                                             <div className="msg-info-name">{chat.author.name}</div>
                                             </div>
                                             <div className="msg-text">
                                                 {chat.text}
+                                            </div>
+                                            <div className="msg-info-time">
+                                                {ConvertDate(chat.createdAt)}
                                             </div>
                                         </div>
                                     </div>)
