@@ -45,7 +45,7 @@ exports.createComment = (req, res) => {
                 let obj = new Comment ({
                     text: message,
                     author: {
-                        id: req.user._id,
+                        _id: req.user._id,
                         name: req.user.name,
                         email: req.user.email,
                     }
@@ -102,7 +102,7 @@ exports.editComment = (req, res) => {
                 errorMessage: 'Comment not found'
             });
         }
-        else if (req.user._id !== comment.author.id) {
+        else if (req.user._id !== comment.author._id) {
             return res.status(400).json({
                 success: false,
                 errorMessage: 'You do not have the right to edit this comment'
@@ -141,7 +141,7 @@ exports.deleteComment = (req, res) => {
                 errorMessage: 'Comment not found'
             });
         }
-        else if (req.user._id.toString() !== comment.author.id.toString()) {
+        else if (req.user._id.toString() !== comment.author._id.toString()) {
             return res.status(400).json({
                 success: false,
                 errorMessage: 'You do not have the right to delete this comment'

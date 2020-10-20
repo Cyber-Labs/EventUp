@@ -1,5 +1,5 @@
-import React ,{ useState } from 'react'
-import { Jumbotron, Button, UncontrolledCarousel } from 'reactstrap'
+import React from 'react'
+import { Jumbotron, Button} from 'reactstrap'
 import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import img1 from './shared/images/choose1.jpg';
@@ -10,7 +10,7 @@ import img2 from './shared/images/explore1.jpg';
 const About = () => {
 
     return(
-        <>
+        <React.Fragment>
         <div className = "intro">
             <div className="container jumbo">
             <Jumbotron style={{background:"none"}}>
@@ -117,7 +117,7 @@ const About = () => {
             </div>
           </div> 
         </div>  
-        </>
+        </React.Fragment>
     )
 }
 
