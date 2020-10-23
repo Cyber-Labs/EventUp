@@ -12,13 +12,18 @@ Your machine should have NPM(or yarn) ,NodeJS and MongoDB installed to use Event
 
 ### Installation
 
+#### Run the below commands in command prompt sequentially
+
 ```
-git clone https://github.com/Cyber-Labs/EventUp
+git clone https://github.com/Cyber-Labs/EventUp.git
 ```
 
 ```
 cd EventUp
 npm install
+```
+
+```
 cd frontend
 npm install
 cd ..
@@ -26,9 +31,7 @@ cd ..
 
 ### Run locally
 
-- Change the credentials in the file .env.test and rename it to .env inside the main folder
-- Change the credentials in the file .env.test and rename it to .env inside the frontend folder
-- Run the below command
+#### Run the below command in command prompt
 
 ```
 npm run dev
