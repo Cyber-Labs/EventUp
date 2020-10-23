@@ -8,23 +8,27 @@ import {
   NavItem,
   Button,
 } from "reactstrap";
+import { useAppState } from "../state/state.js";
 import { NavLink } from "react-router-dom";
 import { isAuth } from "./shared/helpers";
 import { useHistory } from "react-router-dom";
 import { signout } from "./shared/helpers";
 
-const Header = () => {
+const Header = ({ isLoggedOut }) => {
+  const [loggedout, setloggedout] = useState(localStorage.getItem("user"));
+
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isLoggedOut, setisLoggedOut] = useState(false);
+  const { getUser } = useAppState();
+
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
 
   const handleSignout = () => {
-    setisLoggedOut(true);
     signout(() => {
       history.push("/");
     });
+    setloggedout(null);
   };
 
   const history = useHistory();
@@ -53,7 +57,8 @@ const Header = () => {
                       <span> Dashboard</span>
                     </NavLink>
                   </NavItem>
-                  {!isLoggedOut && (
+                  {console.log(getUser())}
+                  {getUser && loggedout && (
                     <Button
                       onClick={() => {
                         handleSignout();
