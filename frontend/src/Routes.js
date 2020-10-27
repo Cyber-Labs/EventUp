@@ -2,7 +2,7 @@ import React, { Fragment, useRef } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./Styles.css";
 
-import Homepage from "./components/Homepage";
+import Homepage from "./components/Homepage/Homepage";
 import AboutusPage from "./components/AboutusPage";
 import Header from "./components/HeaderComponent";
 import Footer from "./components/FooterComponent";
