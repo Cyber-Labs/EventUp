@@ -1,3 +1,15 @@
+:root {
+    --darkBlue: #12232E;
+    --lighterBlue: #007CC7;
+    --lightestBlue: #4DA8DA;
+    --shadowDarkBlue: #203647;
+    --shadowLightBlue: #EEFBFB;
+    --royalBlue: #4169e1;
+    --white: #FFFFFF;
+    --black: #000000;
+    --purple: #E2DEF2;
+  }
+
 .topOfNav{
     background-color: #2d545e;
     color: aliceblue;
@@ -110,18 +122,15 @@
 .footer{
     position: relative;
     bottom: 0px;
-    background-color: #2d545e;
-    color: aliceblue;
+    /* background-color: #2d545e;
+    color: aliceblue; */
+    /* background-color: transparent;
+    background-image: linear-gradient(160deg, #4042B2 20%, #3C297D 100%); */
+    background-color: var(--royalBlue);
     margin:0px auto;
     padding: 20px 0px 20px 0px;
 }
 
-.belowCreate{
-    height:3px;
-    color:cadetblue;
-    background-color: cadetblue;
-    border-radius:1px;
-}
 .belowAboutUs{
     height:1px;
     color: darkslategrey;
@@ -163,29 +172,102 @@
     font-size: 18px;
 }
 
-/* .login-background{
-    background-image: url(components/shared/images/bg2.jpg);
-} */
-
-.footer .contact-link{
-    color: rgb(230, 154, 40);
+.footer,  .footer a, .footer a:hover{
+    color: var(--white);
 }
 
-.footer .fa:hover{
-    color: dodgerblue;
-}
-
-.footer .fa-instagram:hover{
+.fa-instagram:hover{
     color: #c13584;
 }
 
-.footer .fa-facebook:hover{
-    color: white;
+.fa-facebook:hover{
+    color: #4267B2;
 }
 
-.footer .fa-phone:hover{
-    color: green;
+.fa-twitter:hover{
+    color: #00acee;
 }
-.footer .fa-envelope:hover{
-    color: #d44638;
+
+.footerSvg {
+    width: 100%;
+    overflow: hidden;
+    transform: rotateX(180deg);
+    height: 80px;
+    margin-bottom: -1px;
+}
+
+.TopSvg {
+    width: 100%;
+    overflow: hidden;
+    transform: rotateX(180deg);
+    height: 80px;
+    margin-bottom: -1px;   
+}
+
+.BottomSvg {
+    width: 100%;
+    overflow: hidden;
+    transform: rotateY(180deg);
+    height: 80px;
+    margin-bottom: -1px;   
+}
+
+.PartyImage {
+    width: 100%;
+    min-height: 400px;
+    border-radius: 80px;
+    box-shadow: 10px 10px 5px grey;
+}
+
+.PurpleBack {
+    background-color: #E2DEF2;
+}
+
+.lightestBlueBackground {
+    background-color: var(--lightestBlue);
+}
+
+.Blue2 {
+    background-color: #4169e1;
+}
+.heading1 {
+    font-family: "Montserrat", Sans-serif;
+    font-size: 3.5em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.heading2{
+    font-family: "Montserrat", Sans-serif;
+    font-size: 2em;
+    font-weight: 300;
+    letter-spacing: 1px;
+}    
+
+.text-white {
+    color: var(--white);
+}
+
+.para1 {
+    font-size: 2em;
+    font-weight: 200;
+    letter-spacing: 1.5px;
+}
+
+.CardImage {
+    height: 300px !important;
+    /* width: 300px !important; */
+}
+
+.circle1::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ff4a9e;
+    /* top: -16px;
+    left: 64px; */
 }
