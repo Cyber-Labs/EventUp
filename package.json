@@ -1,39 +1,31 @@
 {
   "name": "eventup",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "EventUp is an open source initiative website where we can choose to attend an event (either physically or virtually) based on our interest and get our attendance marked digitally by scanning a QR code.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
-    "client-install": "npm install --prefix frontend",
-    "start": "node app.js",
-    "server": "nodemon app.js",
+    "backend-install": "cd backend && npm install",
+    "frontend-install": "cd frontend && npm install",
+    "all-install": "npm run backend-install && npm run frontend-install",
+    "backend": "nodemon app.js --prefix backend",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aman-Codes/EventUp.git"
   },
   "author": "Aman Dwivedi",
   "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "compression": "^1.7.4",
-    "concurrently": "^5.3.0",
-    "connect-flash": "^0.1.1",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "express-jwt": "^6.0.0",
-    "express-session": "^1.17.1",
-    "googleapis": "^61.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.9",
-    "morgan": "^1.10.0",
-    "nodemailer": "^6.4.14",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+  "bugs": {
+    "url": "https://github.com/Aman-Codes/EventUp/issues"
   },
+  "homepage": "https://github.com/Aman-Codes/EventUp#readme",
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.7"
   }
 }

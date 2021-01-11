@@ -1,6 +1,4 @@
-
-credentials.json
-
 # Node modules
 node_modules/
-config/
+frontend/node_modules/
+backend/node_modules/

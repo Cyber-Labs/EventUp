@@ -3,8 +3,8 @@ const router = express.Router();
 
 // import controller
 const { requireSignin } = require('../../controllers/User/auth');
-const { read, 
-        update, 
+const { read,
+        update
     } = require('../../controllers/User/user');
 
 router.get('/:id', requireSignin, read);
