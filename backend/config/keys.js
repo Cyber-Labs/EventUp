@@ -1,7 +1,7 @@
-let email = 'help.eventup@gmail.com';
-let password = 'Enter the password here';
+const email = 'help.eventup@gmail.com';
+const password = 'Enter the password here';
 
 module.exports = {
-    email: email,
-    password: password,
+  email,
+  password,
 };

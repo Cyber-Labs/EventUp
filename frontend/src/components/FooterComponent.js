@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SvgImage from '../images/svg/4169e1.svg';
 
 function Footer(props){

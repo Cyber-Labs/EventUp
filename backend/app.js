@@ -1,12 +1,11 @@
-const express        = require("express");
-const session        = require('express-session');
-const morgan         = require('morgan');
-const mongoose       = require("mongoose");
-const bodyParser     = require("body-parser");
-const passport       = require("passport");
-const cors           = require('cors');
-const flash          = require('connect-flash');
-const compression    = require('compression');
+const express = require('express');
+const session = require('express-session');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const flash = require('connect-flash');
+const compression = require('compression');
 require('dotenv').config();
 
 const app = express();
@@ -19,23 +18,22 @@ const db = process.env.DATABASE || 'mongodb://localhost:27017';
 
 // Connect to MongoDB
 mongoose
-    .connect(db,{ 
-        useUnifiedTopology: true,
-        useNewUrlParser: true,
-        useFindAndModify: true,
-    }
-  )
+  .connect(db, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: true,
+  })
   .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
 
 // Bodyparser middleware
 app.use(
-    bodyParser.urlencoded({
-      extended: false
-    })
+  bodyParser.urlencoded({
+    extended: false,
+  })
 );
 
 // Express session
@@ -43,7 +41,7 @@ app.use(
   session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 
@@ -51,7 +49,7 @@ app.use(
 app.use(flash());
 
 // Global variables
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
