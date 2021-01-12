@@ -27,7 +27,7 @@ export default function ViewAllEvents() {
         const loadevents = () => {
             axios({
                 method: 'GET',
-                url: `${process.env.REACT_APP_API}/users/events/page/${currentPage}`,
+                url: `${process.env.REACT_APP_API}/events/page/${currentPage}`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -43,7 +43,7 @@ export default function ViewAllEvents() {
         const loadPages = () => {
             axios({
                 method: 'GET',
-                url: `${process.env.REACT_APP_API}/users/events/pagecount`,
+                url: `${process.env.REACT_APP_API}/events/pagecount`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -82,7 +82,7 @@ export default function ViewAllEvents() {
                             width={150}
                             height={150}
                             className="align-self-start mr-3"
-                            src={Concert}
+                            src={event.secureUrl || Concert}
                             alt="Generic placeholder"
                             />
                             <Media.Body>
@@ -93,7 +93,7 @@ export default function ViewAllEvents() {
                             </Media.Body>
                         </Media>
                         <Button variant="primary" className="mt-3">Join</Button>
-                        <Link to={`/users/events/${event._id}`}>Discussion Page</Link>
+                        <Link to={`/events/${event._id}`}>Discussion Page</Link>
                     </Card.Body>
                     </Card> 
                 </div>

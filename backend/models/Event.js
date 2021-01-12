@@ -35,7 +35,7 @@ const EventSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
-    secure_url: {
+    secureUrl: {
       type: String,
       trim: true,
       default: '',

@@ -199,11 +199,11 @@ exports.EventPageCount = (req, res) => {
 };
 
 exports.EventPageData = (req, res) => {
-  const usertoken = req.headers.authorization;
-  console.log('usertoken ', usertoken);
-  const token = usertoken.split(' ');
-  const decoded = jwt.verify(token[1], process.env.JWT_SECRET);
-  console.log('decoded ', decoded);
+  // const usertoken = req.headers.authorization;
+  // console.log('usertoken ', usertoken);
+  // const token = usertoken.split(' ');
+  // const decoded = jwt.verify(token[1], process.env.JWT_SECRET);
+  // console.log('decoded ', decoded);
 
   const pageNumber = req.params.pagenumber;
   const eventsPerPage = 5;

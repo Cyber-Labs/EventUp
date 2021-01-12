@@ -83,7 +83,7 @@ const About = () => {
         <div className="col-12 col-md-6 options">
         <h4><i className="fa fa-plus-square fa-lg">   </i>  Create an event</h4>
         <p>Create yout own eventup group and draw a community of millions.</p>
-        <Link style={{ textDecoration: 'none' }} to="/users/events/create"><h4>Create an event</h4></Link>
+        <Link style={{ textDecoration: 'none' }} to="/events/create"><h4>Create an event</h4></Link>
         </div>
       </div>
       </div>

@@ -42,7 +42,7 @@ const UserSchema = new mongoose.Schema(
 );
 
 UserSchema.virtual('password')
-  .set((password) => {
+  .set(function (password) {
     // create a temporarity variable called tempPassword
     this.tempPassword = password;
     // generate salt
@@ -50,7 +50,7 @@ UserSchema.virtual('password')
     // encryptPassword
     this.hashedtempPassword = this.encryptPassword(password);
   })
-  .get(() => {
+  .get(function () {
     return this.tempPassword;
   });
 

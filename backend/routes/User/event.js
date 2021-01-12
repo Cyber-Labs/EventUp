@@ -23,7 +23,7 @@ router.get('/pagecount', EventPageCount);
 router.get('/page/:pagenumber', EventPageData);
 
 // Show details of the event
-router.get('/:eventId', requireSignin, read);
+router.get('/:eventId', read);
 
 // Update the details of the event
 router.put('/:eventId', requireSignin, update);

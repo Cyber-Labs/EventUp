@@ -22,9 +22,9 @@ export default function Homepage() {
                 Sign Out
             </Button>
                 &emsp;
-            <Button variant="success" href='/users/events/create'>Create Event</Button>
+            <Button variant="success" href='/events/create'>Create Event</Button>
             &emsp;
-            <Button variant="info" href='/users/events'>View All Event</Button>
+            <Button variant="info" href='/events'>View All Event</Button>
         </div>    
     );
 }

@@ -5,12 +5,12 @@ export default function Upload () {
 
   const [values, setValues] = useState({
     inputImage: null,
-    secure_url: null,
+    secureUrl: null,
   });
 
   const {
     inputImage,
-    secure_url
+    secureUrl
   } = values;
 
   // const UploadImage = async e => {
@@ -68,10 +68,10 @@ export default function Upload () {
     })
       .then(response => {
         console.log('Successfully uploaded', response); 
-        console.log('Url ', response.data.secure_url);   
+        console.log('Url ', response.data.secureUrl);   
         setValues({
           ...values,
-          secure_url: response.data.secure_url
+          secureUrl: response.data.secureUrl
         });       
       })
       .catch(error => {
@@ -94,12 +94,12 @@ export default function Upload () {
       </button>
       <br/> <br/>
       {
-        secure_url ?
+        secureUrl ?
         (
           <div>
             The image url  is &emsp;
-            <a href = {secure_url}>
-              {secure_url}
+            <a href = {secureUrl}>
+              {secureUrl}
             </a>
           </div>
         )

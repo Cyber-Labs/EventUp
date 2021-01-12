@@ -54,6 +54,7 @@
     "no-console":"off",
     "consistent-return":"off",
     "no-underscore-dangle":"off",
-    "no-unused-vars":"off"
+    "no-unused-vars":"off",
+    "func-names":"off"
   }
 }
