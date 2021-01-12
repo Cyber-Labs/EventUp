@@ -84,7 +84,7 @@ const CreateEvent = () => {
             .then(response => {
                 axios({
                     method: 'POST',
-                    url: `${process.env.REACT_APP_API}/users/events`,
+                    url: `${process.env.REACT_APP_API}/events`,
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
@@ -96,7 +96,7 @@ const CreateEvent = () => {
                         "price": price,
                         "isPublic": isPublic,
                         "creator": isAuth()._id,
-                        "secure_url": response
+                        "secureUrl": response
                     }
                 })
                     .then(response => {
@@ -112,7 +112,7 @@ const CreateEvent = () => {
                             creator: isAuth()._id ,
                             buttonText: 'Created',
                             inputImage: null,
-                            secure_url: null,
+                            secureUrl: null,
                         });
                         toast.success("Successfully created the event");
                     })

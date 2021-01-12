@@ -59,15 +59,15 @@ const Routes = () => {
               <Header key="7" />
               <UserDashboard />
             </UserPrivateRoute>
-            <UserPrivateRoute exact path="/users/events/create">
+            <UserPrivateRoute exact path="/events/create">
               <Header key="8" />
               <UserCreateEvent />
             </UserPrivateRoute>
-            <UserPrivateRoute exact path="/users/events">
+            <UserPrivateRoute exact path="/events">
               <Header key="9" />
               <ViewAllEvents />
             </UserPrivateRoute>
-            <UserPrivateRoute exact path="/users/events/:eventid">
+            <UserPrivateRoute exact path="/events/:eventid">
               <Header key="10" />
               <DiscussionPage />
             </UserPrivateRoute>

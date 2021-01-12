@@ -20,13 +20,7 @@ git clone https://github.com/Cyber-Labs/EventUp.git
 
 ```
 cd EventUp
-npm install
-```
-
-```
-cd frontend
-npm install
-cd ..
+npm run all-install
 ```
 
 ### Run locally

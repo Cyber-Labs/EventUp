@@ -27,7 +27,7 @@ export default function DiscussionPage() {
         event.preventDefault();
         axios({
             method: 'POST',            
-            url: `${process.env.REACT_APP_API}/users/events/${eventId}/comment`,
+            url: `${process.env.REACT_APP_API}/events/${eventId}/comment`,
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -51,7 +51,7 @@ export default function DiscussionPage() {
         const loadChats = () => {
             axios({
                 method: 'GET',            
-                url: `${process.env.REACT_APP_API}/users/events/${eventId}/comment`,
+                url: `${process.env.REACT_APP_API}/events/${eventId}/comment`,
             })
                 .then(response => {
                     console.log("response.data.data ", response.data.data);
