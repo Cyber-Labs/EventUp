@@ -3,9 +3,9 @@ import {Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle, Button } from
 
 const CardComponent = (props) => {
   return (
-  <div className="CardBody">
+  <div className='CardBody'>
     <Card>
-      <CardImg top width="100%" src={props.ImageSrc} alt="Card image cap" className="CardImage"/>
+      <CardImg top width='100%' src={props.ImageSrc} alt='Card image' className='CardImage'/>
       <CardBody>
         <CardTitle>{props.title}</CardTitle>
         <CardSubtitle>{props.subtitle}</CardSubtitle>

@@ -21,6 +21,7 @@ git clone https://github.com/Cyber-Labs/EventUp.git
 ```
 cd EventUp
 npm run all-install
+npm install -g concurrently
 ```
 
 ### Run locally

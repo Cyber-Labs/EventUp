@@ -212,13 +212,6 @@
     margin-bottom: -1px;   
 }
 
-.PartyImage {
-    width: 100%;
-    min-height: 400px;
-    border-radius: 80px;
-    box-shadow: 10px 10px 5px grey;
-}
-
 .PurpleBack {
     background-color: #E2DEF2;
 }
@@ -229,12 +222,6 @@
 
 .Blue2 {
     background-color: #4169e1;
-}
-.heading1 {
-    font-family: "Montserrat", Sans-serif;
-    font-size: 3.5em;
-    font-weight: 500;
-    letter-spacing: 0.5px;
 }
 
 .heading2{
@@ -248,16 +235,9 @@
     color: var(--white);
 }
 
-.para1 {
-    font-size: 2em;
-    font-weight: 200;
-    letter-spacing: 1.5px;
-}
 
-.CardImage {
-    height: 300px !important;
-    /* width: 300px !important; */
-}
+
+
 
 .circle1::before {
     content: "";
@@ -270,4 +250,70 @@
     background: #ff4a9e;
     /* top: -16px;
     left: 64px; */
+}
+
+/* MY CSS */
+
+.sub-title {
+  font-family: cursive;
+  color: brown;
+}
+
+.title {
+  color: #2874c5;
+  font-weight: 600;
+  text-shadow: 2px 2px #a5d1ff;
+  font-family: none;
+}
+
+.rounded-btn {
+  border-radius: 100px !important;
+}
+
+.para1 {
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 1.5px;
+}
+
+.PartyImage {
+  width: 70%;
+  height: 300px;
+  border-radius: 80px;
+  margin-left: 150px;
+  box-shadow: 10px 10px 5px grey;
+}
+
+.heading1 {
+  font-size: 3.5em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-family: cursive;
+  color: #dcb130;  
+}
+
+.CardImage {
+  height: 250px !important;
+  border-radius: 30px !important;
+  background-color: white !important;
+
+}
+
+.blue-card-bg .card {
+  /* background: rgb(172, 127, 127) !important; */
+  background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(0,212,255,1) 100%) !important;
+  border: none !important;
+}
+
+.yellow-card-bg .card {
+  background: linear-gradient(180deg, rgba(255,255,255,1) 50%, #F2B705 100%) !important;
+  border: none !important;
+}
+
+.underline {
+  border-bottom: 3px solid #906d04;
+}
+
+.color-nav {
+  background-color: #f1ce68 !important;
 }

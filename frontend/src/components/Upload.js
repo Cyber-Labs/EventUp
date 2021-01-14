@@ -45,7 +45,7 @@ export default function Upload () {
         reader.onload = function(e) { 
           document.getElementById( 
             'imagePreview').innerHTML =  
-            `<img src="${e.target.result}" width="200" height="200" class="img-circle mx-auto d-block" alt="Uploaded Image"/>`; 
+            `<img src='${e.target.result}' width='200' height='200' class='img-circle mx-auto d-block' alt='Uploaded Image'/>`; 
         };         
         reader.readAsDataURL(fileInput.files[0]); 
         setValues({
@@ -59,7 +59,7 @@ export default function Upload () {
   const clickSubmit = event => {
     event.preventDefault();
     const data = new FormData();  
-    data.append("file", inputImage );  
+    data.append('file', inputImage );  
     data.append('upload_preset', 'eventup');    
     axios({
       method: 'POST',
@@ -82,11 +82,11 @@ export default function Upload () {
   return (
     <div>
       <h1> Upload a file</h1>
-      <input name="file" id="file" type="file" placeholder="Upload an image" onChange={handleSelectedFile}/>
+      <input name='file' id='file' type='file' placeholder='Upload an image' onChange={handleSelectedFile}/>
       <br/> <br/>
 
       {/* Image Preview */}
-      <div id="imagePreview"></div> 
+      <div id='imagePreview'></div> 
       <br/> <br/>
 
       <button onClick={clickSubmit}>

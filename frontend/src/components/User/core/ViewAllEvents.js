@@ -19,7 +19,7 @@ export default function ViewAllEvents() {
             temp.push(i);
         }
         setpageArray(temp);
-        // console.log("pageArray");
+        // console.log('pageArray');
         // console.log(pageArray);
     }
 
@@ -51,10 +51,10 @@ export default function ViewAllEvents() {
                 .then(response => {
                     // console.log('Page count found', response);
                     const pageCount = response.data;
-                    // console.log("pageCount in load pages");
+                    // console.log('pageCount in load pages');
                     // console.log(pageCount);
                     createPages(pageCount);
-                    // console.log("currentPage");
+                    // console.log('currentPage');
                     // console.log(currentPage);
                 })
                 .catch(error => {
@@ -67,13 +67,13 @@ export default function ViewAllEvents() {
 
     return(
         <React.Fragment>
-            <h1 className="text-center">Recent Events</h1>
+            <h1 className='text-center'>Recent Events</h1>
 
-            <div className="mx-auto">
+            <div className='mx-auto'>
             {
                 events    &&
                 events.map((event, index) => ( 
-                <div className="m-5" key={index}>
+                <div className='m-5' key={index}>
                     <Card>
                     <Card.Header>{event.name}</Card.Header>
                     <Card.Body>
@@ -81,9 +81,9 @@ export default function ViewAllEvents() {
                             <img
                             width={150}
                             height={150}
-                            className="align-self-start mr-3"
+                            className='align-self-start mr-3'
                             src={event.secureUrl || Concert}
-                            alt="Generic placeholder"
+                            alt='Generic placeholder'
                             />
                             <Media.Body>
                                 <Card.Title>Event Details</Card.Title>
@@ -92,7 +92,7 @@ export default function ViewAllEvents() {
                                 </Card.Text>
                             </Media.Body>
                         </Media>
-                        <Button variant="primary" className="mt-3">Join</Button>
+                        <Button variant='primary' className='mt-3'>Join</Button>
                         <Link to={`/events/${event._id}`}>Discussion Page</Link>
                     </Card.Body>
                     </Card> 
@@ -101,11 +101,11 @@ export default function ViewAllEvents() {
                                   
             ))}
             </div>            
-            <div className="mx-auto">
+            <div className='mx-auto'>
                 {   
                     pageArray.map(pageNumber => (
-                    <div className="mx-auto" key={pageNumber}>                        
-                        <button className="px-auto" onClick={() => {setcurrentPage(pageNumber)}}>{pageNumber}</button>
+                    <div className='mx-auto' key={pageNumber}>                        
+                        <button className='px-auto' onClick={() => {setcurrentPage(pageNumber)}}>{pageNumber}</button>
                     </div> 
                 ))}         
             </div>
