@@ -42,40 +42,40 @@ const Signup = () => {
 
     const signupForm = () => (
         <form>
-            <div className="form-group">
-                <label className="labelCenter">Name</label>
-                <input onChange={handleChange('name')} value={name} type="text" className="form-control mx-auto" />
+            <div className='form-group'>
+                <label className='labelCenter'>Name</label>
+                <input onChange={handleChange('name')} value={name} type='text' className='form-control mx-auto' />
             </div>
 
-            <div className="form-group">
-                <label className="labelCenter">Email</label>
-                <input onChange={handleChange('email')} value={email} type="email" className="form-control mx-auto" />
+            <div className='form-group'>
+                <label className='labelCenter'>Email</label>
+                <input onChange={handleChange('email')} value={email} type='email' className='form-control mx-auto' />
             </div>
 
-            <div className="form-group">
-                <label className="labelCenter">Password</label>
-                <input onChange={handleChange('password')} value={password} type="password" className="form-control mx-auto" />
+            <div className='form-group'>
+                <label className='labelCenter'>Password</label>
+                <input onChange={handleChange('password')} value={password} type='password' className='form-control mx-auto' />
             </div>
 
             <div>
-                <button className="btn btn-primary FormSubmit" onClick={clickSubmit}>
+                <button className='btn btn-primary FormSubmit' onClick={clickSubmit}>
                     {buttonText}
                 </button>
             </div>
-            <div className="container text-center mb-4">
+            <div className='container text-center mb-4'>
                 <hr/>
-                Already have an account <Link to = "/users/login"> Login Now!</Link>
+                Already have an account <Link to = '/users/login'> Login Now!</Link>
             </div>
         </form>
     );
 
     return (
-        <div className="row login-background">
+        <div className='row login-background'>
             <ToastContainer />
-            <div className="col-md-6 mx-auto mt-5 mb-5">
-                <div className="card card-body" id="signupForm">
-                    {isAuth() && isAuth().role === 'user' ? <Redirect to="/users/dashboard" /> : null}
-                    <h1 className="text-center mb-4">Register</h1>
+            <div className='col-md-6 mx-auto mt-5 mb-5'>
+                <div className='card card-body' id='signupForm'>
+                    {isAuth() && isAuth().role === 'user' ? <Redirect to='/users/dashboard' /> : null}
+                    <h1 className='text-center mb-4'>Register</h1>
                     {signupForm()}
                 </div>                        
             </div>

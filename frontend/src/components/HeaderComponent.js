@@ -1,87 +1,75 @@
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Navbar,
   NavbarBrand,
   Nav,
   NavbarToggler,
   Collapse,
-  NavItem,
-  Button,
-} from "reactstrap";
-import { useAppState } from "../state/state.js";
-import { NavLink } from "react-router-dom";
-import { isAuth } from "./shared/helpers";
-import { useHistory } from "react-router-dom";
-import { signout } from "./shared/helpers";
+  NavItem
+} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import { isAuth } from './shared/helpers';
+import { useHistory } from 'react-router-dom';
+import { signout } from './shared/helpers';
 
-const Header = ({ isLoggedOut }) => {
-  const [loggedout, setloggedout] = useState(localStorage.getItem("user"));
+const Header = (props) => {
 
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { getUser } = useAppState();
-
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
 
   const handleSignout = () => {
     signout(() => {
-      history.push("/");
+      history.push('/');
     });
-    setloggedout(null);
   };
 
   const history = useHistory();
   return (
     <React.Fragment>
-      <div className="row topOfNav">
-        <div className="col-12 writeup">
-          <h3>Discover the events you are interested in...</h3>
-        </div>
-      </div>
-      <Navbar color="dark" dark expand="md">
-        <div className="container navHeight">
-          <NavbarBrand href="/">EventUp</NavbarBrand>
+      <Navbar className='color-nav' light expand='md'>
+        <div className='container navHeight'>
+          <NavbarBrand href='/'>EventUp</NavbarBrand>
           <NavbarToggler onClick={toggleNav} />
           <Collapse isOpen={isNavOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className='ml-auto' navbar>
               <NavItem>
-                <NavLink className="nav-link" to="/events/create">
+                <NavLink className='nav-link' to='/events/create'>
                   <span> Create Event</span>
                 </NavLink>
               </NavItem>
               {isAuth() ? (
                 <React.Fragment>
                   <NavItem>
-                    <NavLink className="nav-link" to="/users/dashboard">
+                    <NavLink className='nav-link' to='/users/dashboard'>
                       <span> Dashboard</span>
                     </NavLink>
                   </NavItem>
-                  {console.log(getUser())}
-                  {getUser && loggedout && (
-                    <Button
+                    <NavLink
+                      className='nav-link'
+                      to='/'
                       onClick={() => {
                         handleSignout();
                       }}
                     >
                       Sign Out
-                    </Button>
-                  )}
+                    </NavLink>
                 </React.Fragment>
               ) : (
-                <>
+                <React.Fragment>
                   <NavItem>
-                    <NavLink className="nav-link" to="/users/login">
+                    <NavLink className='nav-link' to='/users/login'>
                       <span> Log in</span>
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link" to="/users/register">
+                    <NavLink className='nav-link' to='/users/register'>
                       <span> Sign up</span>
                     </NavLink>
                   </NavItem>
-                </>
+                </React.Fragment>
               )}
             </Nav>
           </Collapse>

@@ -7,7 +7,7 @@ import { signout } from '../../shared/helpers';
 export default function Homepage() {
     const history = useHistory();
     return(
-        <div style={{"minHeight": "50vh" }} className="text-center mt-5">
+        <div style={{'minHeight': '50vh' }} className='text-center mt-5'>
             <div>
                 <h1> Welcome to Dashboard</h1>
             </div>
@@ -15,16 +15,16 @@ export default function Homepage() {
             <Button
                 onClick={() => {
                     signout(() => {
-                        history.push("/");
+                        history.push('/');
                     });
                 }}            
             >
                 Sign Out
             </Button>
                 &emsp;
-            <Button variant="success" href='/events/create'>Create Event</Button>
+            <Button variant='success' href='/events/create'>Create Event</Button>
             &emsp;
-            <Button variant="info" href='/events'>View All Event</Button>
+            <Button variant='info' href='/events'>View All Event</Button>
         </div>    
     );
 }

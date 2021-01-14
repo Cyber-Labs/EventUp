@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const Event = require('../../models/Event');
+const User = require('../../models/User');
 
 exports.create = (req, res) => {
   const {
@@ -220,4 +221,69 @@ exports.EventPageData = (req, res) => {
 
       res.json(doc);
     });
+};
+
+exports.joinEvent = (req, res) => {
+  const { eventId } = req.params;
+  const { userId } = req.body;
+
+  // Validation
+  if (!userId) {
+    return res.status(400).json({
+      error: 'userId is required',
+    });
+  }
+
+  Event.findById(eventId).exec((err, prevEvent) => {
+    if (err || !prevEvent) {
+      return res.status(400).json({
+        error: 'Event not found',
+      });
+    }
+
+    const updatedEvent = prevEvent;
+    updatedEvent.appliedUser.push(userId);
+    Event.findByIdAndUpdate(
+      eventId,
+      { $set: updatedEvent },
+      { new: true },
+      (error, item) => {
+        if (error) {
+          console.log(error);
+          return res.status(400).json({
+            error: 'Event update failed',
+          });
+        }
+      }
+    );
+  });
+
+  User.findById(userId).exec((err, prevUser) => {
+    if (err || !prevUser) {
+      return res.status(400).json({
+        error: 'User not found',
+      });
+    }
+
+    const updatedUser = prevUser;
+    updatedUser.registeredEvents.push(eventId);
+    User.findByIdAndUpdate(
+      userId,
+      { $set: updatedUser },
+      { new: true },
+      (error, item) => {
+        if (error) {
+          console.log(error);
+          return res.status(400).json({
+            error: 'User update failed',
+          });
+        }
+      }
+    );
+  });
+
+  res.json({
+    success: true,
+    message: 'Successfully joined the event',
+  });
 };

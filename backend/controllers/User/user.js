@@ -56,3 +56,18 @@ exports.update = (req, res) => {
     });
   });
 };
+
+exports.registeredEvents = (req, res) => {
+  const { userId } = req.body;
+  User.findById(userId)
+    .populate('registeredEvents')
+    .exec((err, user) => {
+      if (err || !user) {
+        return res.status(400).json({
+          error: 'User not found',
+        });
+      }
+      const { registeredEvents } = user;
+      res.json(registeredEvents);
+    });
+};

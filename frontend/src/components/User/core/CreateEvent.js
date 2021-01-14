@@ -53,7 +53,7 @@ const CreateEvent = () => {
                 reader.onload = function(e) { 
                     document.getElementById( 
                         'imagePreview').innerHTML =  
-                        `<img src="${e.target.result}" width="200" height="200" class="img-circle mx-auto d-block" alt="Uploaded Image"/>`; 
+                        `<img src='${e.target.result}' width='200' height='200' class='img-circle mx-auto d-block' alt='Uploaded Image'/>`; 
                 };                 
                 reader.readAsDataURL(fileInput.files[0]); 
                 setValues({
@@ -68,7 +68,7 @@ const CreateEvent = () => {
         event.preventDefault();
         setValues({ ...values, buttonText: 'Creating' });
         const data = new FormData();    
-        data.append("file", inputImage );    
+        data.append('file', inputImage );    
         data.append('upload_preset', 'eventup');  
 
         axios({
@@ -89,14 +89,14 @@ const CreateEvent = () => {
                         Authorization: `Bearer ${token}`
                     },
                     data: {
-                        "name": name,
-                        "about": about,
-                        "date": date,
-                        "isPaid": isPaid,
-                        "price": price,
-                        "isPublic": isPublic,
-                        "creator": isAuth()._id,
-                        "secureUrl": response
+                        'name': name,
+                        'about': about,
+                        'date': date,
+                        'isPaid': isPaid,
+                        'price': price,
+                        'isPublic': isPublic,
+                        'creator': isAuth()._id,
+                        'secureUrl': response
                     }
                 })
                     .then(response => {
@@ -114,7 +114,7 @@ const CreateEvent = () => {
                             inputImage: null,
                             secureUrl: null,
                         });
-                        toast.success("Successfully created the event");
+                        toast.success('Successfully created the event');
                     })
                     .catch(error => {
                         console.log('Error in creating new event ', error);
@@ -131,113 +131,113 @@ const CreateEvent = () => {
     };
 
     const CreateEventForm = () => (
-        <form encType="multipart/form-data" id="CreateEventForm"> 
-            <div className="form-group">
-                <label className="labelCenter">Event Name</label>
+        <form encType='multipart/form-data' id='CreateEventForm'> 
+            <div className='form-group'>
+                <label className='labelCenter'>Event Name</label>
                 <input 
                     onChange={handleChange('name')} 
                     value={name} 
-                    placeholder="Enter Event Name" 
-                    type="text" 
-                    className="form-control mx-auto" 
+                    placeholder='Enter Event Name' 
+                    type='text' 
+                    className='form-control mx-auto' 
                 />
             </div>
 
-            <div className="form-group">
-                <label className="labelCenter">About Event</label>
+            <div className='form-group'>
+                <label className='labelCenter'>About Event</label>
                 <textarea  
                     onChange={handleChange('about')} 
                     value={about}
-                    placeholder="Enter Event Details" 
-                    type="text" 
-                    className="form-control mx-auto" 
-                    rows="5"
+                    placeholder='Enter Event Details' 
+                    type='text' 
+                    className='form-control mx-auto' 
+                    rows='5'
                 />
             </div>
 
-            <div className="form-group">
-                <label className="labelCenter">Event Date</label>
+            <div className='form-group'>
+                <label className='labelCenter'>Event Date</label>
                 <input 
                     onChange={handleChange('date')} 
                     value={date} 
-                    type="date" 
-                    className="form-control mx-auto" 
+                    type='date' 
+                    className='form-control mx-auto' 
                 />
             </div>
 
-            <div className="form-group">
-                <p className="labelCenter">Is the event paid/ free ? </p>
-                <div className="labelCenter">
+            <div className='form-group'>
+                <p className='labelCenter'>Is the event paid/ free ? </p>
+                <div className='labelCenter'>
                     <input
-                        type="radio"
-                        id="paid"
+                        type='radio'
+                        id='paid'
                         value='paid'
                         checked={isPaid === 'paid'}
                         onChange={handleChange('isPaid')}    
                     />
-                    <label htmlFor="paid"> Paid</label>&emsp;
+                    <label htmlFor='paid'> Paid</label>&emsp;
 
                     <input
-                        type="radio"
-                        id="free"
+                        type='radio'
+                        id='free'
                         value='free'
                         checked={isPaid === 'free'}
                         onChange={handleChange('isPaid')} 
                     />
-                    <label htmlFor="free"> Free</label>&emsp;                    
+                    <label htmlFor='free'> Free</label>&emsp;                    
                 </div>            
             </div>
 
-            <div className="form-group">
-                <p className="labelCenter">Is the event public/ private ? </p>
-                <div className="labelCenter">
+            <div className='form-group'>
+                <p className='labelCenter'>Is the event public/ private ? </p>
+                <div className='labelCenter'>
                     <input
-                        type="radio"
-                        id="public"
+                        type='radio'
+                        id='public'
                         value='public'
                         checked={isPublic === 'public'}
                         onChange={handleChange('isPublic')}    
                     />
-                    <label htmlFor="public"> Public</label>&emsp;
+                    <label htmlFor='public'> Public</label>&emsp;
 
                     <input
-                        type="radio"
-                        id="private"
+                        type='radio'
+                        id='private'
                         value='private'
                         checked={isPublic === 'private'}
                         onChange={handleChange('isPublic')} 
                     />
-                    <label htmlFor="private"> Private</label>&emsp;                    
+                    <label htmlFor='private'> Private</label>&emsp;                    
                 </div>            
             </div>
 
-            <div className="form-group">
-                <label className="labelCenter">Event Price</label>
+            <div className='form-group'>
+                <label className='labelCenter'>Event Price</label>
                 <input 
                     onChange={handleChange('price')} 
                     value={price}
-                    placeholder="Enter Event Price"
-                    type="number" 
-                    className="form-control mx-auto" 
+                    placeholder='Enter Event Price'
+                    type='number' 
+                    className='form-control mx-auto' 
                 />
             </div>
 
-            <div className="form-group align-items-center mx-auto">
-                <label className="labelCenter">Upload Company Logo</label>
+            <div className='form-group align-items-center mx-auto'>
+                <label className='labelCenter'>Upload Company Logo</label>
                 <input
-                    type="file"
-                    id="file"
-                    className="form-control mx-auto border-0"
+                    type='file'
+                    id='file'
+                    className='form-control mx-auto border-0'
                     onChange={handleSelectedFile}
                 />
             </div>
 
             {/* Image Preview */}
-            <div id="imagePreview"></div> 
+            <div id='imagePreview'></div> 
             <br/>
 
-            <div className="text-center">
-                <button className="btn btn-primary FormSubmit" onClick={clickSubmit} >
+            <div className='text-center'>
+                <button className='btn btn-primary FormSubmit' onClick={clickSubmit} >
                     {buttonText}
                 </button>
             </div>
@@ -246,11 +246,11 @@ const CreateEvent = () => {
 
     return (
         <React.Fragment>
-            <div className="row">
+            <div className='row'>
                 <ToastContainer />
-                <div className="col-md-9 mx-auto my-4 ">
-                    <div className="card card-body" id="signupForm">
-                        <h3 className="text-center mb-3">
+                <div className='col-md-9 mx-auto my-4 '>
+                    <div className='card card-body' id='signupForm'>
+                        <h3 className='text-center mb-3'>
                         Create New Event
                         </h3>                        
                         {CreateEventForm()}
