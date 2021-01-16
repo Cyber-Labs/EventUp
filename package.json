@@ -7,9 +7,11 @@
     "doc": "docs"
   },
   "scripts": {
-    "backend-install": "cd backend && npm install",
-    "frontend-install": "cd frontend && npm install",
-    "all-install": "npm run backend-install && npm run frontend-install",
+    "install-backend": "cd backend && npm install",
+    "install-frontend": "cd frontend && npm install",
+    "install-concurrently": "npm install -g concurrently",
+    "install-dep": "npm run install-backend && npm run install-frontend",
+    "install-all": "npm run install-dep && npm run install-concurrently",
     "backend": "nodemon app.js --prefix backend",
     "frontend": "npm start --prefix frontend",
     "lint": "eslint ./",
