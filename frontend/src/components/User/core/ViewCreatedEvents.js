@@ -58,7 +58,7 @@ export default function ViewCreatedEvents() {
                                 </Card.Text>
                             </Media.Body>
                         </Media>
-                        <Link to={`/events/${event._id}`}>Discussion Page</Link>
+                        <Button variant='success' className='mt-3' href={`/events/${event._id}`}>Discussion Page </Button>
                     </Card.Body>
                     </Card> 
                 </div>

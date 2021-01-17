@@ -35,11 +35,6 @@ const Header = (props) => {
           <NavbarToggler onClick={toggleNav} />
           <Collapse isOpen={isNavOpen} navbar>
             <Nav className='ml-auto' navbar>
-              <NavItem>
-                <NavLink className='nav-link' to='/events/create'>
-                  <span> Create Event</span>
-                </NavLink>
-              </NavItem>
               {isAuth() ? (
                 <React.Fragment>
                   <NavItem>

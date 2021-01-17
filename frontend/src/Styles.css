@@ -143,36 +143,36 @@ html, body {
 }
 
 #signupForm{
-  box-shadow: 0 0px 20px 0 rgba(104, 123, 128, 0.7);
-  background-color:rgba(45,84,94,0.7);
+  box-shadow: 0 0px 20px 0 #9dceff;
+  background-color: #9dceff;
 }
 
 #signupForm a{
   text-decoration: none;
-  color: aliceblue;
+  color: #fff;
   font-size: 16px;
 }
 
 #signupForm a:hover{
   text-decoration: none;
-  color: aliceblue;
+  color: #fff;
   font-size: 18px;
 }
 
 #loginForm{
-  box-shadow: 0 0px 20px 0 rgba(104, 123, 128, 0.8);
-  background-color:rgba(45,84,94,0.7);
+  box-shadow: 0 0px 20px 0 #9dceff;
+  background-color: #9dceff;
 }
 
 #loginForm a{
   text-decoration: none;
-  color: aliceblue;
+  color:  #fff;
   font-size: 16px;
 }
 
 #loginForm a:hover{
   text-decoration: none;
-  color: aliceblue;
+  color: #fff;
   font-size: 18px;
 }
 
@@ -320,9 +320,30 @@ html, body {
 }
 
 .color-nav {
-  background-color: #f1ce68 !important;
+  background-color: #4169e1 !important;
 }
 
 .chat-container {
   min-height: 300px;
+}
+
+.FormSubmit {
+  border: 2px solid white !important;
+  box-shadow: 2px 2px #bdbdbd !important;
+}
+
+input[type="file"] {
+  display: none !important;
+}
+
+.navbar-light .navbar-brand {
+  color: #fff !important;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+  color: #fff !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #fff !important;
 }

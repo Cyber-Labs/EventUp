@@ -7,28 +7,28 @@ import { ToastContainer, toast } from 'react-toastify';
 import Concert from '../../shared/images/concert.jpg';
 
 export default function ViewAllEvents() {
-    const [currentPage, setcurrentPage] = useState('1');
-    const [pageArray, setpageArray] = useState([]);
+    // const [currentPage, setcurrentPage] = useState('1');
+    // const [pageArray, setpageArray] = useState([]);
     const [events, setevents] = useState([]);
 
     const token = getCookie('token');
 
-    const createPages =  (PageCount)  => {
-        let temp = [];
-        for(let i = 1; i <= PageCount; ++i)
-        {
-            temp.push(i);
-        }
-        setpageArray(temp);
-        // console.log('pageArray');
-        // console.log(pageArray);
-    }
+    // const createPages =  (PageCount)  => {
+    //     let temp = [];
+    //     for(let i = 1; i <= PageCount; ++i)
+    //     {
+    //         temp.push(i);
+    //     }
+    //     setpageArray(temp);
+    //     // console.log('pageArray');
+    //     // console.log(pageArray);
+    // }
 
     useEffect(() => {
         const loadevents = () => {
             axios({
                 method: 'GET',
-                url: `${process.env.REACT_APP_API}/events/page/${currentPage}`,
+                url: `${process.env.REACT_APP_API}/events/all`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -41,30 +41,30 @@ export default function ViewAllEvents() {
                     console.log('Error in finding events ', error);
                 });
         };
-        const loadPages = () => {
-            axios({
-                method: 'GET',
-                url: `${process.env.REACT_APP_API}/events/pagecount`,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-                .then(response => {
-                    // console.log('Page count found', response);
-                    const pageCount = response.data;
-                    // console.log('pageCount in load pages');
-                    // console.log(pageCount);
-                    createPages(pageCount);
-                    // console.log('currentPage');
-                    // console.log(currentPage);
-                })
-                .catch(error => {
-                    console.log('Error in finding page count', error);
-                });
-        };
+        // const loadPages = () => {
+        //     axios({
+        //         method: 'GET',
+        //         url: `${process.env.REACT_APP_API}/events/pagecount`,
+        //         headers: {
+        //             Authorization: `Bearer ${token}`
+        //         }
+        //     })
+        //         .then(response => {
+        //             // console.log('Page count found', response);
+        //             const pageCount = response.data;
+        //             // console.log('pageCount in load pages');
+        //             // console.log(pageCount);
+        //             createPages(pageCount);
+        //             // console.log('currentPage');
+        //             // console.log(currentPage);
+        //         })
+        //         .catch(error => {
+        //             console.log('Error in finding page count', error);
+        //         });
+        // };
         loadevents();
-        loadPages();
-    },[currentPage, token]);
+        // loadPages();
+    },[]);
 
     const joinEvent = (eventId) => {
       axios({
@@ -113,8 +113,8 @@ export default function ViewAllEvents() {
                                 </Card.Text>
                             </Media.Body>
                         </Media>
-                        <Button variant='primary' className='mt-3' onClick={() => joinEvent(event._id) }>Join</Button>
-                        <Link to={`/events/${event._id}`}>Discussion Page</Link>
+                        <Button variant='primary' className='mt-3' onClick={() => joinEvent(event._id) }>Join</Button> &emsp;
+                        <Button variant='success' className='mt-3' href={`/events/${event._id}`}>Discussion Page </Button>
                     </Card.Body>
                     </Card> 
                 </div>
@@ -122,14 +122,14 @@ export default function ViewAllEvents() {
                                   
             ))}
             </div>            
-            <div className='mx-auto'>
+            {/* <div className='mx-auto'>
                 {   
                     pageArray.map(pageNumber => (
                     <div className='mx-auto' key={pageNumber}>                        
                         <button className='px-auto' onClick={() => {setcurrentPage(pageNumber)}}>{pageNumber}</button>
                     </div> 
                 ))}         
-            </div>
+            </div> */}
         </React.Fragment>
     );
 }

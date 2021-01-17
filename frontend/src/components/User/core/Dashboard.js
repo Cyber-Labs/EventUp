@@ -12,15 +12,6 @@ export default function Homepage() {
                 <h1> Welcome to Dashboard</h1>
             </div>
             <br/>
-            <Button
-                onClick={() => {
-                    signout(() => {
-                        history.push('/');
-                    });
-                }}            
-            >
-                Sign Out
-            </Button>
                 &emsp;
             <Button variant='success' href='/events/create'>Create Event</Button>
             &emsp;
