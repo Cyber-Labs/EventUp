@@ -65,72 +65,68 @@ export default function DiscussionPage() {
     },[message, eventId]);
 
     return(
-        <React.Fragment>
-            <div className='row m-0'>
-                <div className='col-md-9 mx-auto my-0'>
-                    <h1 className='text-center'>Discussion Page</h1>
-                    <section className='msger'>
-                        <header className='msger-header'>
-                            <div className='msger-header-title'>
-                            <i className='fa fa-comments' aria-hidden='true'></i> Discussions
-                            </div>
-                        </header>
-                    {
-                        chats    &&
-                        chats.map((chat, index) => (
-                            <main className='msger-chat' key={index}>
-                                {   
-                                
-                                ( (isAuth()._id) && (chat.author._id) && (chat.author._id.toString() === isAuth()._id.toString()) ) ?
-                                    (<div className='msg right-msg'>
-                                        <div className='msg-bubble'>
-                                            <div className='msg-info'>
-                                            <div className='msg-info-name'>{chat.author.name}</div>
-                                            </div>
-
-                                            <div className='msg-text'>
-                                                {chat.text}
-                                            </div>
-                                            <div className='msg-info-time'>
-                                                {ConvertDate(chat.createdAt)}
-                                            </div>
-                                        </div>
-                                    </div>)
-                                : 
-                                    (<div className='msg left-msg'>
-                                        <div className='msg-bubble'>
-                                            <div className='msg-info'>
-                                            <div className='msg-info-name'>{chat.author.name}</div>
-                                            </div>
-                                            <div className='msg-text'>
-                                                {chat.text}
-                                            </div>
-                                            <div className='msg-info-time'>
-                                                {ConvertDate(chat.createdAt)}
-                                            </div>
-                                        </div>
-                                    </div>)
-                                }
-                            </main>
-                                                     
-                    ))}
-                    </section>
-
-                    <div>
-                        <form className='msger-inputarea'>
-                            <input 
-                                type='text' 
-                                className='msger-input' 
-                                placeholder='Enter your message...' 
-                                onChange={handleChange('message')}
-                                value={message}
-                            />
-                            <button type='submit' className='msger-send-btn' onClick={clickSubmit}>Send</button>
-                        </form>
-                    </div>                  
-
-                </div>
-            </div>
-        </React.Fragment>
+      <React.Fragment>
+        <div className='row m-0'>
+          <div className='col-md-9 mx-auto my-2'>
+            <h1 className='text-center'>Discussion Page</h1>
+            <section className='msger'>
+              <header className='msger-header'>
+                  <div className='msger-header-title'>
+                  <i className='fa fa-comments' aria-hidden='true'></i> Discussions
+                  </div>
+              </header>
+              <div className='chat-container'>
+              {
+                chats    &&
+                chats.map((chat, index) => (
+                  <main className='msger-chat' key={index}>
+                    {((isAuth()._id) && (chat.author._id) && (chat.author._id.toString() === isAuth()._id.toString()) ) ?
+                      (<div className='msg right-msg'>
+                        <div className='msg-bubble'>
+                          <div className='msg-info'>
+                          <div className='msg-info-name'>{chat.author.name}</div>
+                          </div>
+                          <div className='msg-text'>
+                            {chat.text}
+                          </div>
+                          <div className='msg-info-time'>
+                            {ConvertDate(chat.createdAt)}
+                          </div>
+                        </div>
+                      </div>)
+                    : 
+                      (<div className='msg left-msg'>
+                        <div className='msg-bubble'>
+                          <div className='msg-info'>
+                          <div className='msg-info-name'>{chat.author.name}</div>
+                          </div>
+                          <div className='msg-text'>
+                              {chat.text}
+                          </div>
+                          <div className='msg-info-time'>
+                              {ConvertDate(chat.createdAt)}
+                          </div>
+                        </div>
+                      </div>)
+                    }
+                  </main>                                                     
+              ))}
+              </div>
+            </section>
+            <div>
+              <form className='msger-inputarea'>
+                <input 
+                  type='text' 
+                  className='msger-input' 
+                  placeholder='Enter your message...' 
+                  onChange={handleChange('message')}
+                  value={message}
+                />
+                <button type='submit' className='msger-send-btn' onClick={clickSubmit}>Send</button>
+              </form>
+            </div>                  
+          </div>
+        </div>
+      </React.Fragment>
     );
 }

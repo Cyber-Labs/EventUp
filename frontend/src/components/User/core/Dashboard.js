@@ -24,7 +24,11 @@ export default function Homepage() {
                 &emsp;
             <Button variant='success' href='/events/create'>Create Event</Button>
             &emsp;
-            <Button variant='info' href='/events'>View All Event</Button>
+            <Button variant='info' href='/events'>View All Events</Button>
+            &emsp;
+            <Button variant='danger' href='/events/created-events'>View Created Events</Button>
+            &emsp;
+            <Button variant='warning' href='/events/registered-events'>View Registered Events</Button>
         </div>    
     );
 }

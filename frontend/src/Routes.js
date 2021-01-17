@@ -15,6 +15,8 @@ import UserPrivateRoute from './components/User/auth/PrivateRoute';
 import UserDashboard from './components/User/core/Dashboard';
 import UserCreateEvent from './components/User/core/CreateEvent';
 import ViewAllEvents from './components/User/core/ViewAllEvents';
+import ViewCreatedEvents from './components/User/core/ViewCreatedEvents';
+import ViewRegisteredEvents from './components/User/core/ViewRegisteredEvents';
 import DiscussionPage from './components/User/core/DiscussionPage';
 import Layout from './components/shared/Layout';
 
@@ -36,6 +38,8 @@ const Routes = () => {
             <UserPrivateRoute exact path='/users/dashboard' component={ UserDashboard } />
             <UserPrivateRoute exact path='/events/create' component={ UserCreateEvent } />
             <UserPrivateRoute exact path='/events' component={ ViewAllEvents } />
+            <UserPrivateRoute exact path='/events/created-events' component={ ViewCreatedEvents } />
+            <UserPrivateRoute exact path='/events/registered-events' component={ ViewRegisteredEvents } />
             <UserPrivateRoute exact path='/events/:eventid' component={ DiscussionPage} />
             
           </Switch> 

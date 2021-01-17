@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Media, Button,Card} from 'react-bootstrap';
-import {getCookie } from '../../shared/helpers';
+import {getCookie, isAuth } from '../../shared/helpers';
+import { ToastContainer, toast } from 'react-toastify';
 import Concert from '../../shared/images/concert.jpg';
 
 export default function ViewAllEvents() {
@@ -65,10 +66,30 @@ export default function ViewAllEvents() {
         loadPages();
     },[currentPage, token]);
 
+    const joinEvent = (eventId) => {
+      axios({
+        method: 'POST',
+        url: `${process.env.REACT_APP_API}/events/join/${eventId}`,
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        data: {
+          userId: isAuth()._id
+        }
+      })
+        .then(response => {
+          toast.success('Successfully joined the event');
+        })
+        .catch(error => {
+          console.log('Error in joining event ', error);
+          toast.error('Error occured in joining the event');
+        });
+    }
+
     return(
         <React.Fragment>
             <h1 className='text-center'>Recent Events</h1>
-
+            <ToastContainer />
             <div className='mx-auto'>
             {
                 events    &&
@@ -92,7 +113,7 @@ export default function ViewAllEvents() {
                                 </Card.Text>
                             </Media.Body>
                         </Media>
-                        <Button variant='primary' className='mt-3'>Join</Button>
+                        <Button variant='primary' className='mt-3' onClick={() => joinEvent(event._id) }>Join</Button>
                         <Link to={`/events/${event._id}`}>Discussion Page</Link>
                     </Card.Body>
                     </Card> 

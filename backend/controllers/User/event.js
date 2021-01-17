@@ -99,8 +99,41 @@ exports.create = (req, res) => {
         error: 'Event create failed',
       });
     }
-    // console.log("Succesfully Created Event", item);
-    res.json(item);
+    User.findById(creator).exec((error, user) => {
+      if (err || !user) {
+        return res.status(400).json({
+          error: 'User not found',
+        });
+      }
+      if (user.createdEvents.indexOf(obj._id) < 0) {
+        const updatedUser = user;
+        updatedUser.createdEvents.push(obj._id);
+        User.findByIdAndUpdate(
+          creator,
+          { $set: updatedUser },
+          { new: true },
+          (e, result) => {
+            if (e) {
+              console.log(e);
+              return res.status(400).json({
+                error: 'Failed to add event id in user details',
+              });
+            }
+            console.log('Succesfully created event');
+            res.json({
+              success: true,
+              message: 'Successfully created event',
+            });
+          }
+        );
+      } else {
+        console.log('Succesfully created event');
+        res.json({
+          success: true,
+          message: 'Successfully created event',
+        });
+      }
+    });
   });
 };
 
@@ -226,7 +259,8 @@ exports.EventPageData = (req, res) => {
 exports.joinEvent = (req, res) => {
   const { eventId } = req.params;
   const { userId } = req.body;
-
+  console.log('eventId', eventId);
+  console.log('userId ', userId);
   // Validation
   if (!userId) {
     return res.status(400).json({
@@ -238,6 +272,13 @@ exports.joinEvent = (req, res) => {
     if (err || !prevEvent) {
       return res.status(400).json({
         error: 'Event not found',
+      });
+    }
+    if (prevEvent.appliedUser.indexOf(userId) >= 0) {
+      console.log('Already joined the event');
+      return res.json({
+        success: true,
+        message: 'Already joined the event',
       });
     }
 
@@ -256,34 +297,34 @@ exports.joinEvent = (req, res) => {
         }
       }
     );
-  });
 
-  User.findById(userId).exec((err, prevUser) => {
-    if (err || !prevUser) {
-      return res.status(400).json({
-        error: 'User not found',
-      });
-    }
-
-    const updatedUser = prevUser;
-    updatedUser.registeredEvents.push(eventId);
-    User.findByIdAndUpdate(
-      userId,
-      { $set: updatedUser },
-      { new: true },
-      (error, item) => {
-        if (error) {
-          console.log(error);
-          return res.status(400).json({
-            error: 'User update failed',
-          });
-        }
+    User.findById(userId).exec((e, prevUser) => {
+      if (e || !prevUser) {
+        return res.status(400).json({
+          error: 'User not found',
+        });
       }
-    );
-  });
 
-  res.json({
-    success: true,
-    message: 'Successfully joined the event',
+      const updatedUser = prevUser;
+      updatedUser.registeredEvents.push(eventId);
+      User.findByIdAndUpdate(
+        userId,
+        { $set: updatedUser },
+        { new: true },
+        (error, item) => {
+          if (error) {
+            console.log(error);
+            return res.status(400).json({
+              error: 'User update failed',
+            });
+          }
+        }
+      );
+    });
+
+    res.json({
+      success: true,
+      message: 'Successfully joined the event',
+    });
   });
 };

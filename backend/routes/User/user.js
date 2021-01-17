@@ -7,11 +7,13 @@ const { requireSignin } = require('../../controllers/User/auth');
 const {
   read,
   update,
-  registeredEvents,
+  getRegisteredEvents,
+  getCreatedEvents,
 } = require('../../controllers/User/user');
 
-router.get('/:id', requireSignin, read);
 router.put('/update', requireSignin, update);
-router.get('/registered-events', requireSignin, registeredEvents);
+router.get('/registered-events', requireSignin, getRegisteredEvents);
+router.get('/created-events', requireSignin, getCreatedEvents);
+router.get('/:id', requireSignin, read);
 
 module.exports = router;
