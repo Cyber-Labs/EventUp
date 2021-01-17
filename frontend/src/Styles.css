@@ -1,238 +1,242 @@
 :root {
-    --darkBlue: #12232E;
-    --lighterBlue: #007CC7;
-    --lightestBlue: #4DA8DA;
-    --shadowDarkBlue: #203647;
-    --shadowLightBlue: #EEFBFB;
-    --royalBlue: #4169e1;
-    --white: #FFFFFF;
-    --black: #000000;
-    --purple: #E2DEF2;
+  --darkBlue: #12232E;
+  --lighterBlue: #007CC7;
+  --lightestBlue: #4DA8DA;
+  --shadowDarkBlue: #203647;
+  --shadowLightBlue: #EEFBFB;
+  --royalBlue: #4169e1;
+  --white: #FFFFFF;
+  --black: #000000;
+  --purple: #E2DEF2;
   }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .topOfNav{
-    background-color: #2d545e;
-    color: aliceblue;
-    height: 50px;
-    padding-top: 5px;
-    margin: 0px !important;
+  background-color: #2d545e;
+  color: aliceblue;
+  height: 50px;
+  padding-top: 5px;
+  /* margin: 0px !important; */
 }
 
 .topOfNav .writeup{
-    font: 10px 300;
-    text-align: center;
+  font: 10px 300;
+  text-align: center;
 }
 
 .intro{
-    background-image: url(components/shared/images/introBG2.jpg);
-    background-size: cover;
+  background-image: url(components/shared/images/introBG2.jpg);
+  background-size: cover;
 }
 
 .intro .jumbo{
-    padding-top: 60px;
-    padding-bottom: 60px;
-    color: cornsilk;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  color: cornsilk;
 }
 
 .intro .jumbo .display-3{
-    font-size: larger;
-    font-weight: 800;
-    margin-bottom: 23px;
+  font-size: larger;
+  font-weight: 800;
+  margin-bottom: 23px;
 }
 
 .intro .jumbo .introJoin{
-    margin-top: 26px;
-    height: 60px;
-    font-size: larger;
-    font-weight: 600;
+  margin-top: 26px;
+  height: 60px;
+  font-size: larger;
+  font-weight: 600;
 }
 
 .working{
-    height: 100vh;
-    padding-top: 40px;
-    background-color: #180a5b;
+  height: 100vh;
+  padding-top: 40px;
+  background-color: #180a5b;
 }
 
 .working .headWork{
-    text-align: center;
-    color: lightyellow;
-    font-size: 40px;
-    font-weight: 600;
+  text-align: center;
+  color: lightyellow;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 .working img{
-    margin-top: 30px;
-    height: 60vh;
+  margin-top: 30px;
+  height: 60vh;
 }
 
 .twoOptions{
-    padding-top: 40px;
-    padding-bottom: 40px;
-    color: cadetblue;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: cadetblue;
 }
 .twoOptions .optionHead{
-    font-weight: 800;
-    color:black;
+  font-weight: 800;
+  color:black;
 }
 
 .twoOptions .options{
-    padding-top: 25px;
+  padding-top: 25px;
 }
 
 .follow{
-    height: 60;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-    background-color: blanchedalmond;
+  height: 60;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  background-color: blanchedalmond;
 }
 
 .followText{
-    text-align: center;
-    font: 24px;
-    font-weight: 700;
+  text-align: center;
+  font: 24px;
+  font-weight: 700;
 }
 
-
 .follow .follow-box{
-    padding-top: 19px;
-    display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content: center; 
-    /* space-around */
+  padding-top: 19px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content: center; 
+  /* space-around */
 }
 
 .follow .box{
-    width: 200px;
-    height: 200px;
-    text-align: center;
-    
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  
 }
 
 .follow .box a{
-    padding-top: 25%;
-    color: mediumturquoise;
+  padding-top: 25%;
+  color: mediumturquoise;
 }
 
 .follow .box p{
-    font-size: 24px;
-    font-weight: 400;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .footer{
-    position: relative;
-    bottom: 0px;
-    /* background-color: #2d545e;
-    color: aliceblue; */
-    /* background-color: transparent;
-    background-image: linear-gradient(160deg, #4042B2 20%, #3C297D 100%); */
-    background-color: var(--royalBlue);
-    margin:0px auto;
-    padding: 20px 0px 20px 0px;
+  position: relative;
+  bottom: 0px;
+  /* background-color: #2d545e;
+  color: aliceblue; */
+  /* background-color: transparent;
+  background-image: linear-gradient(160deg, #4042B2 20%, #3C297D 100%); */
+  background-color: var(--royalBlue);
+  margin:0px auto;
+  padding: 20px 0px 20px 0px;
 }
 
 .belowAboutUs{
-    height:1px;
-    color: darkslategrey;
-    background-color: darkslategrey;
-    border-radius:0.2px;
+  height:1px;
+  color: darkslategrey;
+  background-color: darkslategrey;
+  border-radius:0.2px;
 }
 
 #signupForm{
-    box-shadow: 0 0px 20px 0 rgba(104, 123, 128, 0.7);
-    background-color:rgba(45,84,94,0.7);
+  box-shadow: 0 0px 20px 0 rgba(104, 123, 128, 0.7);
+  background-color:rgba(45,84,94,0.7);
 }
 
 #signupForm a{
-    text-decoration: none;
-    color: aliceblue;
-    font-size: 16px;
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 16px;
 }
 
 #signupForm a:hover{
-    text-decoration: none;
-    color: aliceblue;
-    font-size: 18px;
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 18px;
 }
 
 #loginForm{
-    box-shadow: 0 0px 20px 0 rgba(104, 123, 128, 0.8);
-    background-color:rgba(45,84,94,0.7);
+  box-shadow: 0 0px 20px 0 rgba(104, 123, 128, 0.8);
+  background-color:rgba(45,84,94,0.7);
 }
 
 #loginForm a{
-    text-decoration: none;
-    color: aliceblue;
-    font-size: 16px;
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 16px;
 }
 
 #loginForm a:hover{
-    text-decoration: none;
-    color: aliceblue;
-    font-size: 18px;
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 18px;
 }
 
 .footer,  .footer a, .footer a:hover{
-    color: var(--white);
+  color: var(--white);
 }
 
 .fa-instagram:hover{
-    color: #c13584;
+  color: #c13584;
 }
 
 .fa-facebook:hover{
-    color: #4267B2;
+  color: #4267B2;
 }
 
 .fa-twitter:hover{
-    color: #00acee;
+  color: #00acee;
 }
 
 .footerSvg {
-    width: 100%;
-    overflow: hidden;
-    transform: rotateX(180deg);
-    height: 80px;
-    margin-bottom: -1px;
+  width: 100%;
+  /* overflow: hidden; */
+  transform: rotateX(180deg);
+  height: 80px;
+  /* margin-bottom: -1px; */
 }
 
 .TopSvg {
-    width: 100%;
-    overflow: hidden;
-    transform: rotateX(180deg);
-    height: 80px;
-    margin-bottom: -1px;   
+  width: 100%;
+  /* overflow: hidden; */
+  transform: rotateX(180deg);
+  height: 80px;
+  /* margin-bottom: -1px;    */
 }
 
 .BottomSvg {
-    width: 100%;
-    overflow: hidden;
-    transform: rotateY(180deg);
-    height: 80px;
-    margin-bottom: -1px;   
+  width: 100%;
+  /* overflow: hidden; */
+  transform: rotateY(180deg);
+  height: 80px;
+  /* margin-bottom: -1px;    */
 }
 
 .PurpleBack {
-    background-color: #E2DEF2;
+  background-color: #E2DEF2;
 }
 
 .lightestBlueBackground {
-    background-color: var(--lightestBlue);
+  background-color: var(--lightestBlue);
 }
 
 .Blue2 {
-    background-color: #4169e1;
+  background-color: #4169e1;
 }
 
 .heading2{
-    font-family: "Montserrat", Sans-serif;
-    font-size: 2em;
-    font-weight: 300;
-    letter-spacing: 1px;
-}    
+  font-family: "Montserrat", Sans-serif;
+  font-size: 2em;
+  font-weight: 300;
+  letter-spacing: 1px;
+}  
 
 .text-white {
-    color: var(--white);
+  color: var(--white);
 }
 
 
@@ -240,16 +244,16 @@
 
 
 .circle1::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #ff4a9e;
-    /* top: -16px;
-    left: 64px; */
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ff4a9e;
+  /* top: -16px;
+  left: 64px; */
 }
 
 /* MY CSS */
@@ -282,6 +286,7 @@
   border-radius: 80px;
   margin-left: 150px;
   box-shadow: 10px 10px 5px grey;
+  max-width: 700px;
 }
 
 .heading1 {
@@ -316,4 +321,8 @@
 
 .color-nav {
   background-color: #f1ce68 !important;
+}
+
+.chat-container {
+  min-height: 300px;
 }

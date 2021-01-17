@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
 
 exports.read = (req, res) => {
@@ -18,7 +19,7 @@ exports.read = (req, res) => {
 exports.update = (req, res) => {
   const { role, name, password, email } = req.body;
 
-  User.findOne({ _id: req.user._id }, (err, user) => {
+  User.findById(req.user._id, (err, user) => {
     // console.log(user);
     if (err || !user) {
       return res.status(400).json({
@@ -57,8 +58,14 @@ exports.update = (req, res) => {
   });
 };
 
-exports.registeredEvents = (req, res) => {
-  const { userId } = req.body;
+exports.getRegisteredEvents = (req, res) => {
+  const usertoken = req.headers.authorization;
+  console.log('usertoken ', usertoken);
+  const token = usertoken.split(' ');
+  const decoded = jwt.verify(token[1], process.env.JWT_SECRET);
+  console.log('decoded ', decoded);
+  const userId = decoded._id;
+
   User.findById(userId)
     .populate('registeredEvents')
     .exec((err, user) => {
@@ -69,5 +76,25 @@ exports.registeredEvents = (req, res) => {
       }
       const { registeredEvents } = user;
       res.json(registeredEvents);
+    });
+};
+
+exports.getCreatedEvents = (req, res) => {
+  const usertoken = req.headers.authorization;
+  console.log('usertoken ', usertoken);
+  const token = usertoken.split(' ');
+  const decoded = jwt.verify(token[1], process.env.JWT_SECRET);
+  console.log('decoded ', decoded);
+  const userId = decoded._id;
+  User.findById(userId)
+    .populate('createdEvents')
+    .exec((err, user) => {
+      if (err || !user) {
+        return res.status(400).json({
+          error: 'User not found',
+        });
+      }
+      const { createdEvents } = user;
+      res.json(createdEvents);
     });
 };
