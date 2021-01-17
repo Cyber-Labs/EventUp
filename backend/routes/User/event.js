@@ -11,6 +11,7 @@ const {
   EventPageCount,
   EventPageData,
   joinEvent,
+  getAllEvents,
 } = require('../../controllers/User/event');
 
 // Create an event
@@ -19,6 +20,9 @@ router.post('/', requireSignin, create);
 
 // The number of pages of event
 router.get('/pagecount', EventPageCount);
+
+// The number of pages of event
+router.get('/all', getAllEvents);
 
 // Data of the events on a particular page
 router.get('/page/:pagenumber', EventPageData);

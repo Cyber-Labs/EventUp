@@ -221,17 +221,14 @@ const CreateEvent = () => {
                     className='form-control mx-auto' 
                 />
             </div>
-
-            <div className='form-group align-items-center mx-auto'>
-                <label className='labelCenter'>Upload Company Logo</label>
-                <input
-                    type='file'
-                    id='file'
-                    className='form-control mx-auto border-0'
-                    onChange={handleSelectedFile}
-                />
-            </div>
-
+            <label for="file-upload" class="custom-file-upload btn btn-primary rounded-button">
+              <i class="fa fa-cloud-upload"></i> Upload Image
+            </label>
+            <input type='file'
+              id='file'
+              className='form-control mx-auto border-0'
+              onChange={handleSelectedFile}  
+            /> 
             {/* Image Preview */}
             <div id='imagePreview'></div> 
             <br/>

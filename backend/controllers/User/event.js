@@ -328,3 +328,14 @@ exports.joinEvent = (req, res) => {
     });
   });
 };
+
+exports.getAllEvents = (req, res) => {
+  Event.find({}).exec((err, doc) => {
+    if (err) {
+      return res.status(400).json({
+        error: 'Error in finding events',
+      });
+    }
+    res.json(doc);
+  });
+};

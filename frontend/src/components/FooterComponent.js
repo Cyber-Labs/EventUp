@@ -9,9 +9,9 @@ function Footer(props){
             <div className='row justify-content-center m-0 text-center'>
                 <div className='col-md-3 offset-md-1 col-12'>
                     <h6 className='justify-content-center' > Follow us at : </h6>
-                    <a className='btn btn-social-icon btn-facebook' href='http://www.facebook.com/profile.php?id='><i className='fa fa-facebook fa-lg'></i></a>
-                    <a className='btn btn-social-icon btn-instagram' href='http://www.instagram.com/'><i className='fa fa-instagram fa-lg'></i></a>
-                    <a className='btn btn-social-icon btn-twitter' href='http://twitter.com/'><i className='fa fa-twitter fa-lg'></i></a>
+                    <a className='btn btn-social-icon btn-facebook' href='https://aman-codes.github.io/'><i className='fa fa-user-circle fa-lg'></i></a>                    
+                    <a className='btn btn-social-icon btn-linkedin' href='https://www.linkedin.com/in/aman-dwivedi/'><i className='fa fa-linkedin fa-lg'></i></a>
+                    <a className='btn btn-social-icon btn-github' href='https://github.com/Aman-Codes'><i className='fa fa-github fa-lg'></i></a>
                     <br /> <br/>
                 </div>
                 <div className='col-md-4 offset-md-3 col-12 '>
