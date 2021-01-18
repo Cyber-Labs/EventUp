@@ -1,6 +1,9 @@
 # EventUp
 
-EventUp is an open source initiative website where we can choose to attend an event (either physically or virtually) based on our interest and get our attendance marked digitally by scanning a QR code.
+EventUp is a website where we can choose to attend an event (either physically or virtually) based on our interest.
+
+## Visit Online
+This website is hosted at [https://event-up-production.herokuapp.com/](https://event-up-production.herokuapp.com/)
 
 ## Getting Started
 
